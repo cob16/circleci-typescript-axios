@@ -7,7 +7,8 @@
   "scripts": {
     "download-open-api": "curl https://circleci.com/api/v2/openapi.yml > ./openapi.yaml",
     "generate": "openapi-generator generate -i ./openapi.yaml -g typescript-axios -o generated-sources/",
-    "build": "npm run download-open-api && npm run generate"
+    "compile": "tsc",
+    "build": "npm run download-open-api && npm run generate && npm run compile"
   },
   "keywords": [
     "circle",
@@ -20,8 +21,12 @@
   ],
   "author": "cob16",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.19.2",
+    "@types/node": "^12.11.1"
+  },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "1.0.12-4.3.0"
+    "@openapitools/openapi-generator-cli": "1.0.12-4.3.0",
+    "typescript": "^3.7.2"
   }
 }

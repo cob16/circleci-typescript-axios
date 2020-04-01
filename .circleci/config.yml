@@ -8,14 +8,14 @@ jobs:
       - restore_cache:
           keys:
             # when lock file changes, use increasingly general patterns to restore cache
-            - node-modules-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - node-modules-v1-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - node-modules-v1-{{ arch }}-{{ .Branch }}
             - node-modules-v1-{{ arch }}
       - run: npm ci
       - save_cache:
           paths:
             - ~/.npm
-          key: node-modules-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: node-modules-v1-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm run build
 workflows:
   version: 2

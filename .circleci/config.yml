@@ -21,8 +21,31 @@ jobs:
           root: doc
           paths:
             - index.html
+    docs-deploy:
+      docker:
+        - image: node:8.10.0
+      steps:
+        - checkout
+        - attach_workspace:
+            at: doc
+        - run:
+            name: Install and configure dependencies
+            command: |
+              npm install -g --silent gh-pages@2.2.0
+              git config user.email "ci-build@circleci.com"
+              git config user.name "ci-build"
+        - run:
+            name: Deploy docs to gh-pages branch
+            command: gh-pages --dist doc
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
+      - docs-deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

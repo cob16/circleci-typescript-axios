@@ -17,6 +17,10 @@ jobs:
             - ~/.npm
           key: node-modules-v1-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm run build
+      - persist_to_workspace:
+          root: doc
+          paths:
+            - index.html
 workflows:
   version: 2
   build_and_test:

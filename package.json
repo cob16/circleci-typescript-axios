@@ -4,6 +4,9 @@
   "description": "auto generated typescript for circleci-lib",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "download-open-api": "curl https://circleci.com/api/v2/openapi.yml > ./openapi.yaml",
     "generate": "openapi-generator generate -i ./openapi.yaml -g typescript-axios -o generated-sources/",
@@ -21,6 +24,10 @@
   ],
   "author": "cob16",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cob16/circleci-typescript-axios.git"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "@types/node": "^13.9.8"

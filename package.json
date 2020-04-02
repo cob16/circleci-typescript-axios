@@ -10,8 +10,9 @@
   "scripts": {
     "download-open-api": "curl https://circleci.com/api/v2/openapi.yml > ./openapi.yaml",
     "generate": "openapi-generator generate -i ./openapi.yaml -g typescript-axios -o generated-sources/",
+    "generate-doc": "openapi-generator generate -i ./openapi.yaml -g html -o doc/",
     "compile": "tsc",
-    "build": "npm run download-open-api && npm run generate && npm run compile"
+    "build": "npm run download-open-api && npm run generate && npm run generate-doc && npm run compile"
   },
   "keywords": [
     "circle",

@@ -51,7 +51,9 @@ jobs:
       - run:
           name: move package files to expected location
           command: cp -r build/lib .
-      - npm publish
+      - run:
+          name: publish package
+          command: npm publish
 
 workflows:
   version: 2
@@ -61,9 +63,9 @@ workflows:
       - docs-deploy:
           requires:
             - build
-#          filters:
-#            branches:
-#              only: master
+          filters:
+            branches:
+              only: master
       - npm-deploy:
           requires:
             - build

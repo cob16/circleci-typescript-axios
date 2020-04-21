@@ -18,16 +18,17 @@ jobs:
           key: node-modules-v1-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm run build
       - persist_to_workspace:
-          root: doc
+          root: .
           paths:
-            - index.html
+            - doc/index.html
+            - lib/*
   docs-deploy:
     docker:
       - image: node:8.10.0
     steps:
       - checkout
       - attach_workspace:
-          at: doc
+          at: build
       - run:
           name: Install and configure dependencies
           command: |
@@ -39,7 +40,18 @@ jobs:
             - "44:14:f3:41:45:06:1c:19:c8:73:03:bd:75:ec:07:c1"
       - run:
           name: Deploy docs to gh-pages branch
-          command: gh-pages --dist doc --message "[skip ci] Update doc pages"
+          command: gh-pages --dist build/doc --message "[skip ci] Update doc pages"
+  npm-deploy:
+    docker:
+      - image: cimg/node:14.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: build
+      - run:
+          name: test attach workspace
+          command: ls build
+#      - npm publish
 
 workflows:
   version: 2
@@ -49,6 +61,14 @@ workflows:
       - docs-deploy:
           requires:
             - build
-          filters:
-            branches:
-              only: master
+#          filters:
+#            branches:
+#              only: master
+      - npm-deploy:
+          requires:
+            - build
+#          filters:
+#            branches:
+#              only: master
+#            tags:
+#              only: ^v[0-9]+(\.[0-9]+)*-?[a-z]*(\.[0-9]+)? # e.g v0.0.2 or v0.0.2-dev.1

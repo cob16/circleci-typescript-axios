@@ -49,9 +49,9 @@ jobs:
       - attach_workspace:
           at: build
       - run:
-          name: test attach workspace
-          command: ls build
-#      - npm publish
+          name: move package files to expected location
+          command: cp -r build/lib .
+      - npm publish
 
 workflows:
   version: 2

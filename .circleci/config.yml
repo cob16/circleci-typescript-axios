@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:jdk-node
+      - image: cimg/openjdk:13.0-node
     steps:
       - checkout
       - restore_cache:

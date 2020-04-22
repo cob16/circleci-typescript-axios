@@ -52,6 +52,9 @@ jobs:
           name: move package files to expected location
           command: cp -r build/lib .
       - run:
+          name: set npm token
+          command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+      - run:
           name: publish package
           command: npm publish
 

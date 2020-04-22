@@ -75,7 +75,6 @@ workflows:
               only: master
       - npm-deploy:
           requires:
-            - build
             - approve-npm
           filters:
             branches:

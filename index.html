@@ -349,7 +349,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs</code></pre></div>
     <div class="method-summary">Get summary metrics for a project workflow's jobs. (<span class="nickname">getProjectWorkflowJobMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project workflow's jobs. Job runs going back at most 90 days are included in the aggregation window.</div>
+    <div class="method-notes">Get summary metrics for a project workflow's jobs. Job runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -446,7 +446,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows</code></pre></div>
     <div class="method-summary">Get summary metrics for a project's workflows (<span class="nickname">getProjectWorkflowMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window.</div>
+    <div class="method-notes">Get summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -1362,20 +1362,26 @@ font-style: italic;
   "next_page_token" : "next_page_token",
   "items" : [ {
     "project_slug" : "gh/CircleCI-Public/api-preview-docs",
+    "starter_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "canceler_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "pipeline_number" : 0,
-    "name" : "build-and-test",
     "pipeline_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "name" : "build-and-test",
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "errorer_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
     "status" : "success"
   }, {
     "project_slug" : "gh/CircleCI-Public/api-preview-docs",
+    "starter_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "canceler_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "pipeline_number" : 0,
-    "name" : "build-and-test",
     "pipeline_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "name" : "build-and-test",
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "errorer_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
     "status" : "success"
   } ]
@@ -2206,7 +2212,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs</code></pre></div>
     <div class="method-summary">Get summary metrics for a project workflow's jobs. (<span class="nickname">getProjectWorkflowJobMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project workflow's jobs. Job runs going back at most 90 days are included in the aggregation window.</div>
+    <div class="method-notes">Get summary metrics for a project workflow's jobs. Job runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -2303,7 +2309,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows</code></pre></div>
     <div class="method-summary">Get summary metrics for a project's workflows (<span class="nickname">getProjectWorkflowMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window.</div>
+    <div class="method-notes">Get summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -3389,11 +3395,14 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "project_slug" : "gh/CircleCI-Public/api-preview-docs",
+  "starter_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "canceler_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "pipeline_number" : 0,
-  "name" : "build-and-test",
   "pipeline_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "name" : "build-and-test",
   "created_at" : "2000-01-23T04:56:07.000+00:00",
   "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "errorer_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "stopped_at" : "2000-01-23T04:56:07.000+00:00",
   "status" : "success"
 }</code></pre>
@@ -3957,16 +3966,19 @@ font-style: italic;
     <h3><a name="Workflow"><code>Workflow</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>A workflow</div>
     <div class="field-items">
-      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the workflow. format: uuid</div>
+      <div class="param">canceler_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+<div class="param">starter_id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+<div class="param">pipeline_id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The ID of the pipeline this workflow belongs to. format: uuid</div>
+<div class="param">errorer_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+<div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the workflow. format: uuid</div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the workflow. </div>
+<div class="param">project_slug </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The project-slug for the pipeline this workflow belongs to. </div>
 <div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The current status of the workflow. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">success</div><div class="param-enum">running</div><div class="param-enum">not_run</div><div class="param-enum">failed</div><div class="param-enum">error</div><div class="param-enum">failing</div><div class="param-enum">on_hold</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
+<div class="param">pipeline_number </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of the pipeline this workflow belongs to. format: int64</div>
 <div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow was created. format: date-time</div>
 <div class="param">stopped_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow stopped. format: date-time</div>
-<div class="param">pipeline_id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The ID of the pipeline this workflow belongs to. format: uuid</div>
-<div class="param">pipeline_number </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of the pipeline this workflow belongs to. format: int64</div>
-<div class="param">project_slug </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The project-slug for the pipeline this workflow belongs to. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

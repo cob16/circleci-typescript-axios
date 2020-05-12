@@ -1,6 +1,6 @@
 {
   "name": "circleci-typescript-axios",
-  "version": "0.0.4-dev.0",
+  "version": "0.1.0",
   "description": "auto generated typescript for circleci-lib",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

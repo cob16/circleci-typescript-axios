@@ -266,6 +266,7 @@ font-style: italic;
   </ul>
   <h4><a href="#Workflow">Workflow</a></h4>
   <ul>
+  <li><a href="#approvePendingApprovalJobById"><code><span class="http-method">post</span> /workflow/{id}/approve/{approval_request_id}</code></a></li>
   <li><a href="#cancelWorkflow"><code><span class="http-method">post</span> /workflow/{id}/cancel</code></a></li>
   <li><a href="#getWorkflowById"><code><span class="http-method">get</span> /workflow/{id}</code></a></li>
   <li><a href="#listWorkflowJobs"><code><span class="http-method">get</span> /workflow/{id}/job</code></a></li>
@@ -551,7 +552,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">start-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -1362,27 +1367,27 @@ font-style: italic;
   "next_page_token" : "next_page_token",
   "items" : [ {
     "project_slug" : "gh/CircleCI-Public/api-preview-docs",
-    "starter_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "canceler_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "canceled_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "pipeline_number" : 0,
     "pipeline_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "name" : "build-and-test",
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "errorer_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "errored_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
+    "started_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "status" : "success"
   }, {
     "project_slug" : "gh/CircleCI-Public/api-preview-docs",
-    "starter_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "canceler_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "canceled_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "pipeline_number" : 0,
     "pipeline_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "name" : "build-and-test",
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "errorer_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "errored_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
+    "started_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "status" : "success"
   } ]
 }</code></pre>
@@ -2414,7 +2419,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">start-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -3318,6 +3327,54 @@ font-style: italic;
   </div> <!-- method -->
   <hr/>
   <h1><a name="Workflow">Workflow</a></h1>
+  <div class="method"><a name="approvePendingApprovalJobById"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /workflow/{id}/approve/{approval_request_id}</code></pre></div>
+    <div class="method-summary">Approve a job (<span class="nickname">approvePendingApprovalJobById</span>)</div>
+    <div class="method-notes">Approves a pending approval job in a workflow.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">approval_request_id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The ID of the job being approved. default: null format: uuid</div><div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The unique ID of the workflow. default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#MessageResponse">MessageResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">202</h4>
+    A confirmation message.
+        <a href="#MessageResponse">MessageResponse</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="cancelWorkflow"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -3395,15 +3452,15 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "project_slug" : "gh/CircleCI-Public/api-preview-docs",
-  "starter_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-  "canceler_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "canceled_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "pipeline_number" : 0,
   "pipeline_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "name" : "build-and-test",
   "created_at" : "2000-01-23T04:56:07.000+00:00",
   "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-  "errorer_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "errored_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "stopped_at" : "2000-01-23T04:56:07.000+00:00",
+  "started_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
   "status" : "success"
 }</code></pre>
 
@@ -3455,6 +3512,7 @@ font-style: italic;
     "project_slug" : "gh/CircleCI-Public/api-preview-docs",
     "canceled_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "approved_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "approval_request_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "name" : "name",
     "started_at" : "2000-01-23T04:56:07.000+00:00",
     "job_number" : 0,
@@ -3467,6 +3525,7 @@ font-style: italic;
     "project_slug" : "gh/CircleCI-Public/api-preview-docs",
     "canceled_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "approved_by" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "approval_request_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "name" : "name",
     "started_at" : "2000-01-23T04:56:07.000+00:00",
     "job_number" : 0,
@@ -3694,7 +3753,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">canceled_by (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the user. format: uuid</div>
 <div class="param">dependencies </div><div class="param-desc"><span class="param-type"><a href="#UUID">array[UUID]</a></span> A sequence of the unique job IDs for the jobs that this job depends upon in the workflow. format: uuid</div>
-<div class="param">job_number </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of the job. format: int64</div>
+<div class="param">job_number (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of the job. format: int64</div>
 <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the job. format: uuid</div>
 <div class="param">started_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the job started. format: date-time</div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the job. </div>
@@ -3705,6 +3764,7 @@ font-style: italic;
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">build</div><div class="param-enum">approval</div>
 <div class="param">stopped_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The time when the job stopped. format: date-time</div>
+<div class="param">approval_request_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the job. format: uuid</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -3966,16 +4026,16 @@ font-style: italic;
     <h3><a name="Workflow"><code>Workflow</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>A workflow</div>
     <div class="field-items">
-      <div class="param">canceler_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
-<div class="param">starter_id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
-<div class="param">pipeline_id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The ID of the pipeline this workflow belongs to. format: uuid</div>
-<div class="param">errorer_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
+      <div class="param">pipeline_id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The ID of the pipeline this workflow belongs to. format: uuid</div>
+<div class="param">canceled_by (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
 <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the workflow. format: uuid</div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the workflow. </div>
 <div class="param">project_slug </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The project-slug for the pipeline this workflow belongs to. </div>
+<div class="param">errored_by (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
 <div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The current status of the workflow. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">success</div><div class="param-enum">running</div><div class="param-enum">not_run</div><div class="param-enum">failed</div><div class="param-enum">error</div><div class="param-enum">failing</div><div class="param-enum">on_hold</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
+<div class="param">started_by </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span>  format: uuid</div>
 <div class="param">pipeline_number </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of the pipeline this workflow belongs to. format: int64</div>
 <div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow was created. format: date-time</div>
 <div class="param">stopped_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow stopped. format: date-time</div>

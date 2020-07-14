@@ -219,6 +219,7 @@ font-style: italic;
   <li><a href="#getPipelineByNumber"><code><span class="http-method">get</span> /project/{project-slug}/pipeline/{pipeline-number}</code></a></li>
   <li><a href="#getPipelineConfigById"><code><span class="http-method">get</span> /pipeline/{pipeline-id}/config</code></a></li>
   <li><a href="#listMyPipelines"><code><span class="http-method">get</span> /project/{project-slug}/pipeline/mine</code></a></li>
+  <li><a href="#listPipelines"><code><span class="http-method">get</span> /pipeline</code></a></li>
   <li><a href="#listPipelinesForProject"><code><span class="http-method">get</span> /project/{project-slug}/pipeline</code></a></li>
   <li><a href="#listWorkflowsByPipelineId"><code><span class="http-method">get</span> /pipeline/{pipeline-id}/workflow</code></a></li>
   <li><a href="#triggerPipeline"><code><span class="http-method">post</span> /project/{project-slug}/pipeline</code></a></li>
@@ -245,6 +246,7 @@ font-style: italic;
   <li><a href="#getUser"><code><span class="http-method">get</span> /user/{id}</code></a></li>
   <li><a href="#listCheckoutKeys"><code><span class="http-method">get</span> /project/{project-slug}/checkout-key</code></a></li>
   <li><a href="#listEnvVars"><code><span class="http-method">get</span> /project/{project-slug}/envvar</code></a></li>
+  <li><a href="#listPipelines"><code><span class="http-method">get</span> /pipeline</code></a></li>
   </ul>
   <h4><a href="#Project">Project</a></h4>
   <ul>
@@ -289,7 +291,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">job-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div><div class="param">start-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -321,13 +327,13 @@ font-style: italic;
     "started_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   }, {
     "started_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   } ]
 }</code></pre>
@@ -556,7 +562,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. default: null format: date-time</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -589,14 +595,14 @@ font-style: italic;
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   }, {
     "duration" : 0,
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   } ]
 }</code></pre>
@@ -853,14 +859,18 @@ font-style: italic;
   "items" : [ {
     "result" : "result",
     "file" : "file",
+    "run_time" : 0.8008281904610115,
     "classname" : "classname",
     "name" : "name",
+    "source" : "source",
     "message" : "message"
   }, {
     "result" : "result",
     "file" : "file",
+    "run_time" : 0.8008281904610115,
     "classname" : "classname",
     "name" : "name",
+    "source" : "source",
     "message" : "message"
   } ]
 }</code></pre>
@@ -1096,6 +1106,129 @@ font-style: italic;
       <div class="param">project-slug (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">page-token (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PipelineListResponse">PipelineListResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "next_page_token" : "next_page_token",
+  "items" : [ {
+    "project_slug" : "gh/CircleCI-Public/api-preview-docs",
+    "number" : 0,
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "vcs" : {
+      "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "commit" : {
+        "subject" : "subject",
+        "body" : "body"
+      },
+      "tag" : "v3.1.4159",
+      "provider_name" : "GitHub",
+      "origin_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "branch" : "feature/design-new-api",
+      "revision" : "f454a02b5d10fcccfd7d9dd7608a76d6493a98b4"
+    },
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "state" : "created",
+    "trigger" : {
+      "actor" : {
+        "avatar_url" : "avatar_url",
+        "login" : "login"
+      },
+      "received_at" : "2000-01-23T04:56:07.000+00:00",
+      "type" : "explicit"
+    },
+    "errors" : [ {
+      "type" : "config",
+      "message" : "message"
+    }, {
+      "type" : "config",
+      "message" : "message"
+    } ]
+  }, {
+    "project_slug" : "gh/CircleCI-Public/api-preview-docs",
+    "number" : 0,
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "vcs" : {
+      "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "commit" : {
+        "subject" : "subject",
+        "body" : "body"
+      },
+      "tag" : "v3.1.4159",
+      "provider_name" : "GitHub",
+      "origin_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "branch" : "feature/design-new-api",
+      "revision" : "f454a02b5d10fcccfd7d9dd7608a76d6493a98b4"
+    },
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "state" : "created",
+    "trigger" : {
+      "actor" : {
+        "avatar_url" : "avatar_url",
+        "login" : "login"
+      },
+      "received_at" : "2000-01-23T04:56:07.000+00:00",
+      "type" : "explicit"
+    },
+    "errors" : [ {
+      "type" : "config",
+      "message" : "message"
+    }, {
+      "type" : "config",
+      "message" : "message"
+    } ]
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A sequence of pipelines.
+        <a href="#PipelineListResponse">PipelineListResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listPipelines"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pipeline</code></pre></div>
+    <div class="method-summary">Get a list of pipelines (<span class="nickname">listPipelines</span>)</div>
+    <div class="method-notes">Returns all pipelines for the most recently built projects (max 250) you follow in an organization.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">org-slug (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Org slug in the form <code>vcs-slug/org-name</code> default: null </div><div class="param">mine (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Only include entries created by your user. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -1448,7 +1581,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#PipelineLight">PipelineLight</a>
+      <a href="#PipelineCreation">PipelineCreation</a>
       
     </div>
 
@@ -1473,7 +1606,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">201</h4>
     The created pipeline.
-        <a href="#PipelineLight">PipelineLight</a>
+        <a href="#PipelineCreation">PipelineCreation</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Preview">Preview</a></h1>
@@ -2156,7 +2289,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">job-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div><div class="param">start-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -2188,13 +2325,13 @@ font-style: italic;
     "started_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   }, {
     "started_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   } ]
 }</code></pre>
@@ -2423,7 +2560,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. default: null format: date-time</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -2456,14 +2593,14 @@ font-style: italic;
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   }, {
     "duration" : 0,
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits-used" : 0,
+    "credits_used" : 0,
     "status" : "success"
   } ]
 }</code></pre>
@@ -2517,14 +2654,18 @@ font-style: italic;
   "items" : [ {
     "result" : "result",
     "file" : "file",
+    "run_time" : 0.8008281904610115,
     "classname" : "classname",
     "name" : "name",
+    "source" : "source",
     "message" : "message"
   }, {
     "result" : "result",
     "file" : "file",
+    "run_time" : 0.8008281904610115,
     "classname" : "classname",
     "name" : "name",
+    "source" : "source",
     "message" : "message"
   } ]
 }</code></pre>
@@ -2700,6 +2841,129 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A sequence of environment variables.
         <a href="#EnvironmentVariableListResponse">EnvironmentVariableListResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listPipelines"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /pipeline</code></pre></div>
+    <div class="method-summary">Get a list of pipelines (<span class="nickname">listPipelines</span>)</div>
+    <div class="method-notes">Returns all pipelines for the most recently built projects (max 250) you follow in an organization.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">org-slug (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Org slug in the form <code>vcs-slug/org-name</code> default: null </div><div class="param">mine (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Only include entries created by your user. default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">page-token (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#PipelineListResponse">PipelineListResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "next_page_token" : "next_page_token",
+  "items" : [ {
+    "project_slug" : "gh/CircleCI-Public/api-preview-docs",
+    "number" : 0,
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "vcs" : {
+      "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "commit" : {
+        "subject" : "subject",
+        "body" : "body"
+      },
+      "tag" : "v3.1.4159",
+      "provider_name" : "GitHub",
+      "origin_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "branch" : "feature/design-new-api",
+      "revision" : "f454a02b5d10fcccfd7d9dd7608a76d6493a98b4"
+    },
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "state" : "created",
+    "trigger" : {
+      "actor" : {
+        "avatar_url" : "avatar_url",
+        "login" : "login"
+      },
+      "received_at" : "2000-01-23T04:56:07.000+00:00",
+      "type" : "explicit"
+    },
+    "errors" : [ {
+      "type" : "config",
+      "message" : "message"
+    }, {
+      "type" : "config",
+      "message" : "message"
+    } ]
+  }, {
+    "project_slug" : "gh/CircleCI-Public/api-preview-docs",
+    "number" : 0,
+    "updated_at" : "2000-01-23T04:56:07.000+00:00",
+    "vcs" : {
+      "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "commit" : {
+        "subject" : "subject",
+        "body" : "body"
+      },
+      "tag" : "v3.1.4159",
+      "provider_name" : "GitHub",
+      "origin_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
+      "branch" : "feature/design-new-api",
+      "revision" : "f454a02b5d10fcccfd7d9dd7608a76d6493a98b4"
+    },
+    "created_at" : "2000-01-23T04:56:07.000+00:00",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "state" : "created",
+    "trigger" : {
+      "actor" : {
+        "avatar_url" : "avatar_url",
+        "login" : "login"
+      },
+      "received_at" : "2000-01-23T04:56:07.000+00:00",
+      "type" : "explicit"
+    },
+    "errors" : [ {
+      "type" : "config",
+      "message" : "message"
+    }, {
+      "type" : "config",
+      "message" : "message"
+    } ]
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A sequence of pipelines.
+        <a href="#PipelineListResponse">PipelineListResponse</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Project">Project</a></h1>
@@ -3636,13 +3900,13 @@ font-style: italic;
     <li><a href="#MessageResponse"><code>MessageResponse</code> - </a></li>
     <li><a href="#Pipeline"><code>Pipeline</code> - </a></li>
     <li><a href="#PipelineConfig"><code>PipelineConfig</code> - </a></li>
-    <li><a href="#PipelineLight"><code>PipelineLight</code> - </a></li>
+    <li><a href="#PipelineCreation"><code>PipelineCreation</code> - </a></li>
     <li><a href="#PipelineListResponse"><code>PipelineListResponse</code> - </a></li>
-    <li><a href="#Pipeline_errors"><code>Pipeline_errors</code> - </a></li>
-    <li><a href="#Pipeline_trigger"><code>Pipeline_trigger</code> - </a></li>
-    <li><a href="#Pipeline_trigger_actor"><code>Pipeline_trigger_actor</code> - </a></li>
-    <li><a href="#Pipeline_vcs"><code>Pipeline_vcs</code> - </a></li>
-    <li><a href="#Pipeline_vcs_commit"><code>Pipeline_vcs_commit</code> - </a></li>
+    <li><a href="#PipelineListResponse_errors"><code>PipelineListResponse_errors</code> - </a></li>
+    <li><a href="#PipelineListResponse_trigger"><code>PipelineListResponse_trigger</code> - </a></li>
+    <li><a href="#PipelineListResponse_trigger_actor"><code>PipelineListResponse_trigger_actor</code> - </a></li>
+    <li><a href="#PipelineListResponse_vcs"><code>PipelineListResponse_vcs</code> - </a></li>
+    <li><a href="#PipelineListResponse_vcs_commit"><code>PipelineListResponse_vcs_commit</code> - </a></li>
     <li><a href="#Project"><code>Project</code> - </a></li>
     <li><a href="#Project_vcs_info"><code>Project_vcs_info</code> - </a></li>
     <li><a href="#RerunWorkflowParameters"><code>RerunWorkflowParameters</code> - RerunWorkflowParameters</a></li>
@@ -3863,10 +4127,10 @@ font-style: italic;
   </div>
   <div class="model">
     <h3><a name="Pipeline"><code>Pipeline</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>NOTE: The definition of pipeline is subject to change.</div>
+    <div class='model-description'>A pipeline response.</div>
     <div class="field-items">
       <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the pipeline. format: uuid</div>
-<div class="param">errors </div><div class="param-desc"><span class="param-type"><a href="#Pipeline_errors">array[Pipeline_errors]</a></span> A sequence of errors that have occurred within the pipeline. </div>
+<div class="param">errors </div><div class="param-desc"><span class="param-type"><a href="#PipelineListResponse_errors">array[PipelineListResponse_errors]</a></span> A sequence of errors that have occurred within the pipeline. </div>
 <div class="param">project_slug </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The project-slug for the pipeline. </div>
 <div class="param">updated_at (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the pipeline was last updated. format: date-time</div>
 <div class="param">number </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of the pipeline. format: int64</div>
@@ -3874,8 +4138,8 @@ font-style: italic;
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">created</div><div class="param-enum">errored</div><div class="param-enum">pending</div>
 <div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the pipeline was created. format: date-time</div>
-<div class="param">trigger </div><div class="param-desc"><span class="param-type"><a href="#Pipeline_trigger">Pipeline_trigger</a></span>  </div>
-<div class="param">vcs (optional)</div><div class="param-desc"><span class="param-type"><a href="#Pipeline_vcs">Pipeline_vcs</a></span>  </div>
+<div class="param">trigger </div><div class="param-desc"><span class="param-type"><a href="#PipelineListResponse_trigger">PipelineListResponse_trigger</a></span>  </div>
+<div class="param">vcs (optional)</div><div class="param-desc"><span class="param-type"><a href="#PipelineListResponse_vcs">PipelineListResponse_vcs</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -3887,8 +4151,8 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="PipelineLight"><code>PipelineLight</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>NOTE: The definition of pipeline is subject to change.</div>
+    <h3><a name="PipelineCreation"><code>PipelineCreation</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>A pipeline creation response.</div>
     <div class="field-items">
       <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the pipeline. format: uuid</div>
 <div class="param">state </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The current state of the pipeline. </div>
@@ -3907,7 +4171,7 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="Pipeline_errors"><code>Pipeline_errors</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="PipelineListResponse_errors"><code>PipelineListResponse_errors</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>An error with a type and message.</div>
     <div class="field-items">
       <div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of error. </div>
@@ -3917,18 +4181,18 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="Pipeline_trigger"><code>Pipeline_trigger</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="PipelineListResponse_trigger"><code>PipelineListResponse_trigger</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>A summary of the trigger.</div>
     <div class="field-items">
       <div class="param">type </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of trigger. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">explicit</div><div class="param-enum">api</div><div class="param-enum">webhook</div>
 <div class="param">received_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the trigger was received. format: date-time</div>
-<div class="param">actor </div><div class="param-desc"><span class="param-type"><a href="#Pipeline_trigger_actor">Pipeline_trigger_actor</a></span>  </div>
+<div class="param">actor </div><div class="param-desc"><span class="param-type"><a href="#PipelineListResponse_trigger_actor">PipelineListResponse_trigger_actor</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="Pipeline_trigger_actor"><code>Pipeline_trigger_actor</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="PipelineListResponse_trigger_actor"><code>PipelineListResponse_trigger_actor</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>The user who triggered the Pipeline.</div>
     <div class="field-items">
       <div class="param">login </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The login information for the user on the VCS. </div>
@@ -3936,7 +4200,7 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="Pipeline_vcs"><code>Pipeline_vcs</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="PipelineListResponse_vcs"><code>PipelineListResponse_vcs</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>VCS information for the pipeline.</div>
     <div class="field-items">
       <div class="param">provider_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the VCS provider (e.g. GitHub, Bitbucket). </div>
@@ -3945,11 +4209,11 @@ font-style: italic;
 <div class="param">revision </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The code revision the pipeline ran. </div>
 <div class="param">branch (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. </div>
 <div class="param">tag (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The tag used by the pipeline. The commit that this tag points to was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. </div>
-<div class="param">commit (optional)</div><div class="param-desc"><span class="param-type"><a href="#Pipeline_vcs_commit">Pipeline_vcs_commit</a></span>  </div>
+<div class="param">commit (optional)</div><div class="param-desc"><span class="param-type"><a href="#PipelineListResponse_vcs_commit">PipelineListResponse_vcs_commit</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="Pipeline_vcs_commit"><code>Pipeline_vcs_commit</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="PipelineListResponse_vcs_commit"><code>PipelineListResponse_vcs_commit</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>The latest commit in the pipeline.</div>
     <div class="field-items">
       <div class="param">subject </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The subject of the commit message. </div>
@@ -3998,6 +4262,8 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The failure message associated with the test. </div>
+<div class="param">source </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The program that generated the test results </div>
+<div class="param">run_time </div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span> The time it took to run the test in seconds format: double</div>
 <div class="param">file </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The file in which the test is defined. </div>
 <div class="param">result </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Indication of whether the test succeeded. </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the test. </div>
@@ -4081,7 +4347,7 @@ font-style: italic;
 <div class="param">duration </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The duration in seconds of a run. format: int64</div>
 <div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow was created. format: date-time</div>
 <div class="param">stopped_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow stopped. format: date-time</div>
-<div class="param">creditsMinusused </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution format: int64</div>
+<div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution format: int64</div>
 <div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Workflow status. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">success</div><div class="param-enum">failed</div><div class="param-enum">error</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
@@ -4148,7 +4414,7 @@ font-style: italic;
 <div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Job status. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">success</div><div class="param-enum">not_run</div><div class="param-enum">failed</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
-<div class="param">creditsMinusused </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution format: int64</div>
+<div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution format: int64</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

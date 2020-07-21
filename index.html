@@ -199,6 +199,16 @@ font-style: italic;
 
   <h3>Table of Contents </h3>
   <div class="method-summary"></div>
+  <h4><a href="#Context">Context</a></h4>
+  <ul>
+  <li><a href="#addEnvironmentVariableToContext"><code><span class="http-method">put</span> /context/{context-id}/environment-variable/{env-var-name}</code></a></li>
+  <li><a href="#createContext"><code><span class="http-method">post</span> /context</code></a></li>
+  <li><a href="#deleteContext"><code><span class="http-method">delete</span> /context/{context-id}</code></a></li>
+  <li><a href="#deleteEnvironmentVariableFromContext"><code><span class="http-method">delete</span> /context/{context-id}/environment-variable/{env-var-name}</code></a></li>
+  <li><a href="#getContext"><code><span class="http-method">get</span> /context/{context-id}</code></a></li>
+  <li><a href="#listContexts"><code><span class="http-method">get</span> /context</code></a></li>
+  <li><a href="#listEnvironmentVariablesFromContext"><code><span class="http-method">get</span> /context/{context-id}/environment-variable</code></a></li>
+  </ul>
   <h4><a href="#Insights">Insights</a></h4>
   <ul>
   <li><a href="#getProjectJobRuns"><code><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs/{job-name}</code></a></li>
@@ -226,13 +236,18 @@ font-style: italic;
   </ul>
   <h4><a href="#Preview">Preview</a></h4>
   <ul>
+  <li><a href="#addEnvironmentVariableToContext"><code><span class="http-method">put</span> /context/{context-id}/environment-variable/{env-var-name}</code></a></li>
   <li><a href="#cancelJob"><code><span class="http-method">post</span> /project/{project-slug}/job/{job-number}/cancel</code></a></li>
   <li><a href="#createCheckoutKey"><code><span class="http-method">post</span> /project/{project-slug}/checkout-key</code></a></li>
+  <li><a href="#createContext"><code><span class="http-method">post</span> /context</code></a></li>
   <li><a href="#createEnvVar"><code><span class="http-method">post</span> /project/{project-slug}/envvar</code></a></li>
   <li><a href="#deleteCheckoutKey"><code><span class="http-method">delete</span> /project/{project-slug}/checkout-key/{fingerprint}</code></a></li>
+  <li><a href="#deleteContext"><code><span class="http-method">delete</span> /context/{context-id}</code></a></li>
   <li><a href="#deleteEnvVar"><code><span class="http-method">delete</span> /project/{project-slug}/envvar/{name}</code></a></li>
+  <li><a href="#deleteEnvironmentVariableFromContext"><code><span class="http-method">delete</span> /context/{context-id}/environment-variable/{env-var-name}</code></a></li>
   <li><a href="#getCheckoutKey"><code><span class="http-method">get</span> /project/{project-slug}/checkout-key/{fingerprint}</code></a></li>
   <li><a href="#getCollaborations"><code><span class="http-method">get</span> /me/collaborations</code></a></li>
+  <li><a href="#getContext"><code><span class="http-method">get</span> /context/{context-id}</code></a></li>
   <li><a href="#getCurrentUser"><code><span class="http-method">get</span> /me</code></a></li>
   <li><a href="#getEnvVar"><code><span class="http-method">get</span> /project/{project-slug}/envvar/{name}</code></a></li>
   <li><a href="#getJobArtifacts"><code><span class="http-method">get</span> /project/{project-slug}/{job-number}/artifacts</code></a></li>
@@ -245,7 +260,9 @@ font-style: italic;
   <li><a href="#getTests"><code><span class="http-method">get</span> /project/{project-slug}/{job-number}/tests</code></a></li>
   <li><a href="#getUser"><code><span class="http-method">get</span> /user/{id}</code></a></li>
   <li><a href="#listCheckoutKeys"><code><span class="http-method">get</span> /project/{project-slug}/checkout-key</code></a></li>
+  <li><a href="#listContexts"><code><span class="http-method">get</span> /context</code></a></li>
   <li><a href="#listEnvVars"><code><span class="http-method">get</span> /project/{project-slug}/envvar</code></a></li>
+  <li><a href="#listEnvironmentVariablesFromContext"><code><span class="http-method">get</span> /context/{context-id}/environment-variable</code></a></li>
   <li><a href="#listPipelines"><code><span class="http-method">get</span> /pipeline</code></a></li>
   </ul>
   <h4><a href="#Project">Project</a></h4>
@@ -275,6 +292,385 @@ font-style: italic;
   <li><a href="#rerunWorkflow"><code><span class="http-method">post</span> /workflow/{id}/rerun</code></a></li>
   </ul>
 
+  <h1><a name="Context">Context</a></h1>
+  <div class="method"><a name="addEnvironmentVariableToContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /context/{context-id}/environment-variable/{env-var-name}</code></pre></div>
+    <div class="method-summary">Add or update an environment variable (<span class="nickname">addEnvironmentVariableToContext</span>)</div>
+    <div class="method-notes">Create or update an environment variable within a context. Returns information about the environment variable, not including its value.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div><div class="param">env-var-name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inline_object_1 <a href="#inline_object_1">inline_object_1</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1_items">inline_response_200_1_items</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "variable" : "POSTGRES_USER",
+  "created_at" : "2015-09-21T17:29:21.042Z",
+  "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The new environment variable
+        <a href="#inline_response_200_1_items">inline_response_200_1_items</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="createContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /context</code></pre></div>
+    <div class="method-summary">Create a new context (<span class="nickname">createContext</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inline_object <a href="#inline_object">inline_object</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Context">Context</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "created_at" : "2015-09-21T17:29:21.042Z",
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The new context
+        <a href="#Context">Context</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /context/{context-id}</code></pre></div>
+    <div class="method-summary">Delete a context (<span class="nickname">deleteContext</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#MessageResponse">MessageResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A confirmation message
+        <a href="#MessageResponse">MessageResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteEnvironmentVariableFromContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /context/{context-id}/environment-variable/{env-var-name}</code></pre></div>
+    <div class="method-summary">Remove an environment variable (<span class="nickname">deleteEnvironmentVariableFromContext</span>)</div>
+    <div class="method-notes">Delete an environment variable from a context.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">env-var-name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable default: null </div><div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#MessageResponse">MessageResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A confirmation message
+        <a href="#MessageResponse">MessageResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /context/{context-id}</code></pre></div>
+    <div class="method-summary">Get a context (<span class="nickname">getContext</span>)</div>
+    <div class="method-notes">Returns basic information about a context.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Context">Context</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "created_at" : "2015-09-21T17:29:21.042Z",
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The context
+        <a href="#Context">Context</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listContexts"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /context</code></pre></div>
+    <div class="method-summary">List contexts (<span class="nickname">listContexts</span>)</div>
+    <div class="method-notes">List all contexts for an owner.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">owner-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The unique ID of the owner of the context. Specify either this or owner-slug. default: null format: uuid</div><div class="param">owner-slug (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A string that represents an organization. Specify either this or owner-id. Cannot be used for accounts. default: null </div><div class="param">owner-type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">page-token (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "next_page_token" : "next_page_token",
+  "items" : [ {
+    "name" : "name",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  }, {
+    "name" : "name",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A paginated list of contexts
+        <a href="#inline_response_200">inline_response_200</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listEnvironmentVariablesFromContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /context/{context-id}/environment-variable</code></pre></div>
+    <div class="method-summary">List environment variables (<span class="nickname">listEnvironmentVariablesFromContext</span>)</div>
+    <div class="method-notes">List information about environment variables in a context, not including their values.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1">inline_response_200_1</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "next_page_token" : "next_page_token",
+  "items" : [ {
+    "variable" : "POSTGRES_USER",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  }, {
+    "variable" : "POSTGRES_USER",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A paginated list of environment variables
+        <a href="#inline_response_200_1">inline_response_200_1</a>
+  </div> <!-- method -->
+  <hr/>
   <h1><a name="Insights">Insights</a></h1>
   <div class="method"><a name="getProjectJobRuns"/>
     <div class="method-path">
@@ -313,7 +709,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_3">inline_response_200_3</a>
+      <a href="#inline_response_200_5">inline_response_200_5</a>
       
     </div>
 
@@ -348,7 +744,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of recent job runs
-        <a href="#inline_response_200_3">inline_response_200_3</a>
+        <a href="#inline_response_200_5">inline_response_200_5</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowJobMetrics"/>
@@ -382,7 +778,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_2">inline_response_200_2</a>
+      <a href="#inline_response_200_4">inline_response_200_4</a>
       
     </div>
 
@@ -445,7 +841,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of summary metrics by workflow job.
-        <a href="#inline_response_200_2">inline_response_200_2</a>
+        <a href="#inline_response_200_4">inline_response_200_4</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowMetrics"/>
@@ -477,7 +873,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200">inline_response_200</a>
+      <a href="#inline_response_200_2">inline_response_200_2</a>
       
     </div>
 
@@ -542,7 +938,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of summary metrics by workflow
-        <a href="#inline_response_200">inline_response_200</a>
+        <a href="#inline_response_200_2">inline_response_200_2</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowRuns"/>
@@ -580,7 +976,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_1">inline_response_200_1</a>
+      <a href="#inline_response_200_3">inline_response_200_3</a>
       
     </div>
 
@@ -617,7 +1013,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of recent workflow runs
-        <a href="#inline_response_200_1">inline_response_200_1</a>
+        <a href="#inline_response_200_3">inline_response_200_3</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Job">Job</a></h1>
@@ -1610,6 +2006,68 @@ font-style: italic;
   </div> <!-- method -->
   <hr/>
   <h1><a name="Preview">Preview</a></h1>
+  <div class="method"><a name="addEnvironmentVariableToContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /context/{context-id}/environment-variable/{env-var-name}</code></pre></div>
+    <div class="method-summary">Add or update an environment variable (<span class="nickname">addEnvironmentVariableToContext</span>)</div>
+    <div class="method-notes">Create or update an environment variable within a context. Returns information about the environment variable, not including its value.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div><div class="param">env-var-name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable default: null </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inline_object_1 <a href="#inline_object_1">inline_object_1</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1_items">inline_response_200_1_items</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "variable" : "POSTGRES_USER",
+  "created_at" : "2015-09-21T17:29:21.042Z",
+  "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The new environment variable
+        <a href="#inline_response_200_1_items">inline_response_200_1_items</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="cancelJob"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1720,6 +2178,60 @@ font-style: italic;
         <a href="#CheckoutKey">CheckoutKey</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="createContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /context</code></pre></div>
+    <div class="method-summary">Create a new context (<span class="nickname">createContext</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inline_object <a href="#inline_object">inline_object</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Context">Context</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "created_at" : "2015-09-21T17:29:21.042Z",
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The new context
+        <a href="#Context">Context</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="createEnvVar"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1827,6 +2339,52 @@ font-style: italic;
         <a href="#MessageResponse">MessageResponse</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="deleteContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /context/{context-id}</code></pre></div>
+    <div class="method-summary">Delete a context (<span class="nickname">deleteContext</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#MessageResponse">MessageResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A confirmation message
+        <a href="#MessageResponse">MessageResponse</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="deleteEnvVar"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -1872,6 +2430,54 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A confirmation message.
+        <a href="#MessageResponse">MessageResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteEnvironmentVariableFromContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /context/{context-id}/environment-variable/{env-var-name}</code></pre></div>
+    <div class="method-summary">Remove an environment variable (<span class="nickname">deleteEnvironmentVariableFromContext</span>)</div>
+    <div class="method-notes">Delete an environment variable from a context.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">env-var-name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable default: null </div><div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#MessageResponse">MessageResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "message" : "message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A confirmation message
         <a href="#MessageResponse">MessageResponse</a>
   </div> <!-- method -->
   <hr/>
@@ -1974,6 +2580,54 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Collaborations
         
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /context/{context-id}</code></pre></div>
+    <div class="method-summary">Get a context (<span class="nickname">getContext</span>)</div>
+    <div class="method-notes">Returns basic information about a context.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Context">Context</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "created_at" : "2015-09-21T17:29:21.042Z",
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The context
+        <a href="#Context">Context</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getCurrentUser"/>
@@ -2311,7 +2965,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_3">inline_response_200_3</a>
+      <a href="#inline_response_200_5">inline_response_200_5</a>
       
     </div>
 
@@ -2346,7 +3000,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of recent job runs
-        <a href="#inline_response_200_3">inline_response_200_3</a>
+        <a href="#inline_response_200_5">inline_response_200_5</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowJobMetrics"/>
@@ -2380,7 +3034,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_2">inline_response_200_2</a>
+      <a href="#inline_response_200_4">inline_response_200_4</a>
       
     </div>
 
@@ -2443,7 +3097,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of summary metrics by workflow job.
-        <a href="#inline_response_200_2">inline_response_200_2</a>
+        <a href="#inline_response_200_4">inline_response_200_4</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowMetrics"/>
@@ -2475,7 +3129,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200">inline_response_200</a>
+      <a href="#inline_response_200_2">inline_response_200_2</a>
       
     </div>
 
@@ -2540,7 +3194,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of summary metrics by workflow
-        <a href="#inline_response_200">inline_response_200</a>
+        <a href="#inline_response_200_2">inline_response_200_2</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowRuns"/>
@@ -2578,7 +3232,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_1">inline_response_200_1</a>
+      <a href="#inline_response_200_3">inline_response_200_3</a>
       
     </div>
 
@@ -2615,7 +3269,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     A paginated list of recent workflow runs
-        <a href="#inline_response_200_1">inline_response_200_1</a>
+        <a href="#inline_response_200_3">inline_response_200_3</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getTests"/>
@@ -2790,6 +3444,71 @@ font-style: italic;
         <a href="#CheckoutKeyListResponse">CheckoutKeyListResponse</a>
   </div> <!-- method -->
   <hr/>
+  <div class="method"><a name="listContexts"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /context</code></pre></div>
+    <div class="method-summary">List contexts (<span class="nickname">listContexts</span>)</div>
+    <div class="method-notes">List all contexts for an owner.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">owner-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The unique ID of the owner of the context. Specify either this or owner-slug. default: null format: uuid</div><div class="param">owner-slug (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A string that represents an organization. Specify either this or owner-id. Cannot be used for accounts. default: null </div><div class="param">owner-type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">page-token (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "next_page_token" : "next_page_token",
+  "items" : [ {
+    "name" : "name",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  }, {
+    "name" : "name",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A paginated list of contexts
+        <a href="#inline_response_200">inline_response_200</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="listEnvVars"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -2841,6 +3560,61 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A sequence of environment variables.
         <a href="#EnvironmentVariableListResponse">EnvironmentVariableListResponse</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="listEnvironmentVariablesFromContext"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /context/{context-id}/environment-variable</code></pre></div>
+    <div class="method-summary">List environment variables (<span class="nickname">listEnvironmentVariablesFromContext</span>)</div>
+    <div class="method-notes">List information about environment variables in a context, not including their values.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">context-id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1">inline_response_200_1</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "next_page_token" : "next_page_token",
+  "items" : [ {
+    "variable" : "POSTGRES_USER",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  }, {
+    "variable" : "POSTGRES_USER",
+    "created_at" : "2015-09-21T17:29:21.042Z",
+    "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A paginated list of environment variables
+        <a href="#inline_response_200_1">inline_response_200_1</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listPipelines"/>
@@ -3884,6 +4658,7 @@ font-style: italic;
     <li><a href="#CheckoutKeyInput"><code>CheckoutKeyInput</code> - CheckoutKeyInput</a></li>
     <li><a href="#CheckoutKeyListResponse"><code>CheckoutKeyListResponse</code> - </a></li>
     <li><a href="#Collaboration"><code>Collaboration</code> - </a></li>
+    <li><a href="#Context"><code>Context</code> - </a></li>
     <li><a href="#EnvironmentVariableListResponse"><code>EnvironmentVariableListResponse</code> - </a></li>
     <li><a href="#EnvironmentVariablePair"><code>EnvironmentVariablePair</code> - </a></li>
     <li><a href="#EnvironmentVariablePair_1"><code>EnvironmentVariablePair_1</code> - EnvironmentVariablePair</a></li>
@@ -3917,6 +4692,9 @@ font-style: italic;
     <li><a href="#Workflow"><code>Workflow</code> - </a></li>
     <li><a href="#WorkflowJobListResponse"><code>WorkflowJobListResponse</code> - </a></li>
     <li><a href="#WorkflowListResponse"><code>WorkflowListResponse</code> - </a></li>
+    <li><a href="#_context_owner"><code>_context_owner</code> - </a></li>
+    <li><a href="#inline_object"><code>inline_object</code> - </a></li>
+    <li><a href="#inline_object_1"><code>inline_object_1</code> - </a></li>
     <li><a href="#inline_response_200"><code>inline_response_200</code> - </a></li>
     <li><a href="#inline_response_200_1"><code>inline_response_200_1</code> - </a></li>
     <li><a href="#inline_response_200_1_items"><code>inline_response_200_1_items</code> - </a></li>
@@ -3926,9 +4704,12 @@ font-style: italic;
     <li><a href="#inline_response_200_2_metrics_duration_metrics"><code>inline_response_200_2_metrics_duration_metrics</code> - </a></li>
     <li><a href="#inline_response_200_3"><code>inline_response_200_3</code> - </a></li>
     <li><a href="#inline_response_200_3_items"><code>inline_response_200_3_items</code> - </a></li>
-    <li><a href="#inline_response_200_items"><code>inline_response_200_items</code> - </a></li>
-    <li><a href="#inline_response_200_metrics"><code>inline_response_200_metrics</code> - </a></li>
-    <li><a href="#inline_response_200_metrics_duration_metrics"><code>inline_response_200_metrics_duration_metrics</code> - </a></li>
+    <li><a href="#inline_response_200_4"><code>inline_response_200_4</code> - </a></li>
+    <li><a href="#inline_response_200_4_items"><code>inline_response_200_4_items</code> - </a></li>
+    <li><a href="#inline_response_200_4_metrics"><code>inline_response_200_4_metrics</code> - </a></li>
+    <li><a href="#inline_response_200_4_metrics_duration_metrics"><code>inline_response_200_4_metrics_duration_metrics</code> - </a></li>
+    <li><a href="#inline_response_200_5"><code>inline_response_200_5</code> - </a></li>
+    <li><a href="#inline_response_200_5_items"><code>inline_response_200_5_items</code> - </a></li>
   </ol>
 
   <div class="model">
@@ -3985,6 +4766,15 @@ font-style: italic;
       <div class="param">vcsMinustype </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The VCS provider </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the organization </div>
 <div class="param">avatar_url </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> URL to the user's avatar on the VCS </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Context"><code>Context</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the context. format: uuid</div>
+<div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The user defined name of the context. </div>
+<div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the context was created. format: date-time</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -4324,23 +5114,110 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200"><code>inline_response_200</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>Paginated workflow summary metrics.</div>
+    <h3><a name="_context_owner"><code>_context_owner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_items">array[inline_response_200_items]</a></span> Workflow summary metrics. </div>
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the owner of the context. Specify either this or slug. format: uuid</div>
+<div class="param">slug (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A string that represents an organization. Specify either this or id. Cannot be used for accounts. </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">account</div><div class="param-enum">organization</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_object"><code>inline_object</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The user defined name of the context. </div>
+<div class="param">owner </div><div class="param-desc"><span class="param-type"><a href="#_context_owner">_context_owner</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_object_1"><code>inline_object_1</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">value </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The value of the environment variable </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200"><code>inline_response_200</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#Context">array[Context]</a></span>  </div>
 <div class="param">next_page_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A token to pass as a <code>page-token</code> query parameter to return the next page of results. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="inline_response_200_1"><code>inline_response_200_1</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>Paginated recent workflow runs.</div>
+    <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_items">array[inline_response_200_1_items]</a></span> Recent workflow runs. </div>
+      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_1_items">array[inline_response_200_1_items]</a></span>  </div>
 <div class="param">next_page_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A token to pass as a <code>page-token</code> query parameter to return the next page of results. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="inline_response_200_1_items"><code>inline_response_200_1_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">variable </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the environment variable </div>
+<div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the environment variable was created. format: date-time</div>
+<div class="param">context_id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> ID of the context (UUID) format: uuid</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2"><code>inline_response_200_2</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Paginated workflow summary metrics.</div>
+    <div class="field-items">
+      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_items">array[inline_response_200_2_items]</a></span> Workflow summary metrics. </div>
+<div class="param">next_page_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A token to pass as a <code>page-token</code> query parameter to return the next page of results. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2_items"><code>inline_response_200_2_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the workflow. </div>
+<div class="param">window_start </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The start of the aggregation window for workflow metrics. format: date-time</div>
+<div class="param">window_end </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The end of the aggregation window for workflow metrics. format: date-time</div>
+<div class="param">metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_metrics">inline_response_200_2_metrics</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2_metrics"><code>inline_response_200_2_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Metrics relating to a workflow's runs.</div>
+    <div class="field-items">
+      <div class="param">success_rate </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The ratio of successful runs / total runs. format: float</div>
+<div class="param">total_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total number of runs. format: int64</div>
+<div class="param">failed_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of failed runs. format: int64</div>
+<div class="param">successful_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of successful runs. format: int64</div>
+<div class="param">throughput </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The average number of workflow runs per day. format: float</div>
+<div class="param">mttr </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The mean time to recovery (mean time between failures and their next success) in seconds. format: int64</div>
+<div class="param">total_credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total credits consumed by the workflow in the aggregation window. format: int64</div>
+<div class="param">duration_metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_metrics_duration_metrics">inline_response_200_2_metrics_duration_metrics</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2_metrics_duration_metrics"><code>inline_response_200_2_metrics_duration_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Metrics relating to the duration of runs for a workflow.</div>
+    <div class="field-items">
+      <div class="param">min </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The minimum duration, in seconds, among a group of runs. format: int64</div>
+<div class="param">mean </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The mean duration, in seconds, among a group of runs. format: int64</div>
+<div class="param">median </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The median duration, in seconds, among a group of runs. format: int64</div>
+<div class="param">p95 </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The 95th percentile duration, in seconds, among a group of runs. format: int64</div>
+<div class="param">max </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The max duration, in seconds, among a group of runs. format: int64</div>
+<div class="param">standard_deviation </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The standard deviation, in seconds, among a group of runs. format: float</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_3"><code>inline_response_200_3</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Paginated recent workflow runs.</div>
+    <div class="field-items">
+      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_3_items">array[inline_response_200_3_items]</a></span> Recent workflow runs. </div>
+<div class="param">next_page_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A token to pass as a <code>page-token</code> query parameter to return the next page of results. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_3_items"><code>inline_response_200_3_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the workflow. format: uuid</div>
@@ -4354,25 +5231,25 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_2"><code>inline_response_200_2</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_4"><code>inline_response_200_4</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Paginated workflow job summary metrics.</div>
     <div class="field-items">
-      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_items">array[inline_response_200_2_items]</a></span> Job summary metrics. </div>
+      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_items">array[inline_response_200_4_items]</a></span> Job summary metrics. </div>
 <div class="param">next_page_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A token to pass as a <code>page-token</code> query parameter to return the next page of results. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_2_items"><code>inline_response_200_2_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_4_items"><code>inline_response_200_4_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the job. </div>
 <div class="param">window_start </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The start of the aggregation window for job metrics. format: date-time</div>
 <div class="param">window_end </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The end of the aggregation window for job metrics. format: date-time</div>
-<div class="param">metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_metrics">inline_response_200_2_metrics</a></span>  </div>
+<div class="param">metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics">inline_response_200_4_metrics</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_2_metrics"><code>inline_response_200_2_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_4_metrics"><code>inline_response_200_4_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Metrics relating to a workflow job's runs.</div>
     <div class="field-items">
       <div class="param">success_rate </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The ratio of successful runs / total runs. format: float</div>
@@ -4381,11 +5258,11 @@ font-style: italic;
 <div class="param">successful_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of successful runs. format: int64</div>
 <div class="param">throughput </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The average number of job runs per day. format: float</div>
 <div class="param">total_credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total credits consumed by the job in the aggregation window. format: int64</div>
-<div class="param">duration_metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_metrics_duration_metrics">inline_response_200_2_metrics_duration_metrics</a></span>  </div>
+<div class="param">duration_metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_duration_metrics">inline_response_200_4_metrics_duration_metrics</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_2_metrics_duration_metrics"><code>inline_response_200_2_metrics_duration_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_4_metrics_duration_metrics"><code>inline_response_200_4_metrics_duration_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Metrics relating to the duration of runs for a workflow job.</div>
     <div class="field-items">
       <div class="param">min </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The minimum duration, in seconds, among a group of runs. format: int64</div>
@@ -4397,15 +5274,15 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_3"><code>inline_response_200_3</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_5"><code>inline_response_200_5</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Paginated recent job runs.</div>
     <div class="field-items">
-      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_3_items">array[inline_response_200_3_items]</a></span> Recent job runs. </div>
+      <div class="param">items </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_5_items">array[inline_response_200_5_items]</a></span> Recent job runs. </div>
 <div class="param">next_page_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A token to pass as a <code>page-token</code> query parameter to return the next page of results. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="inline_response_200_3_items"><code>inline_response_200_3_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="inline_response_200_5_items"><code>inline_response_200_5_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the job. format: uuid</div>
@@ -4415,42 +5292,6 @@ font-style: italic;
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">success</div><div class="param-enum">not_run</div><div class="param-enum">failed</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
 <div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution format: int64</div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="inline_response_200_items"><code>inline_response_200_items</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the workflow. </div>
-<div class="param">window_start </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The start of the aggregation window for workflow metrics. format: date-time</div>
-<div class="param">window_end </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The end of the aggregation window for workflow metrics. format: date-time</div>
-<div class="param">metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_metrics">inline_response_200_metrics</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="inline_response_200_metrics"><code>inline_response_200_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>Metrics relating to a workflow's runs.</div>
-    <div class="field-items">
-      <div class="param">success_rate </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The ratio of successful runs / total runs. format: float</div>
-<div class="param">total_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total number of runs. format: int64</div>
-<div class="param">failed_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of failed runs. format: int64</div>
-<div class="param">successful_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of successful runs. format: int64</div>
-<div class="param">throughput </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The average number of workflow runs per day. format: float</div>
-<div class="param">mttr </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The mean time to recovery (mean time between failures and their next success) in seconds. format: int64</div>
-<div class="param">total_credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total credits consumed by the workflow in the aggregation window. format: int64</div>
-<div class="param">duration_metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_metrics_duration_metrics">inline_response_200_metrics_duration_metrics</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="inline_response_200_metrics_duration_metrics"><code>inline_response_200_metrics_duration_metrics</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'>Metrics relating to the duration of runs for a workflow.</div>
-    <div class="field-items">
-      <div class="param">min </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The minimum duration, in seconds, among a group of runs. format: int64</div>
-<div class="param">mean </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The mean duration, in seconds, among a group of runs. format: int64</div>
-<div class="param">median </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The median duration, in seconds, among a group of runs. format: int64</div>
-<div class="param">p95 </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The 95th percentile duration, in seconds, among a group of runs. format: int64</div>
-<div class="param">max </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The max duration, in seconds, among a group of runs. format: int64</div>
-<div class="param">standard_deviation </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The standard deviation, in seconds, among a group of runs. format: float</div>
     </div>  <!-- field-items -->
   </div>
   </body>

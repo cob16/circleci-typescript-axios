@@ -558,23 +558,19 @@ font-style: italic;
     <div class="method-summary">List contexts (<span class="nickname">listContexts</span>)</div>
     <div class="method-notes">List all contexts for an owner.</div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">owner-id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The unique ID of the owner of the context. Specify either this or owner-slug. default: null format: uuid</div><div class="param">owner-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A string that represents an organization. Specify either this or owner-id. Cannot be used for accounts. default: null </div><div class="param">owner-type (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. default: null </div>
-    </div>  <!-- field-items -->
 
 
 
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">page-token (optional)</div>
+      <div class="param">owner-id (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The unique ID of the owner of the context. Specify either this or owner-slug. default: null format: uuid</div><div class="param">owner-slug (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A string that represents an organization. Specify either this or owner-id. Cannot be used for accounts. default: null </div><div class="param">owner-type (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. default: null </div><div class="param">page-token (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
     </div>  <!-- field-items -->
@@ -687,11 +683,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">job-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div><div class="param">start-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -703,7 +695,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div><div class="param">page-token (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">start-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -954,11 +950,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">start-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -970,7 +962,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div><div class="param">page-token (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">start-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -1618,23 +1614,19 @@ font-style: italic;
     <div class="method-summary">Get a list of pipelines (<span class="nickname">listPipelines</span>)</div>
     <div class="method-notes">Returns all pipelines for the most recently built projects (max 250) you follow in an organization.</div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">org-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Org slug in the form <code>vcs-slug/org-name</code> default: null </div><div class="param">mine (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Only include entries created by your user. default: null </div>
-    </div>  <!-- field-items -->
 
 
 
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">page-token (optional)</div>
+      <div class="param">org-slug (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Org slug in the form <code>vcs-slug/org-name</code> default: null </div><div class="param">page-token (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">mine (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Only include entries created by your user. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -2943,11 +2935,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">job-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div><div class="param">start-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -2959,7 +2947,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div><div class="param">page-token (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">start-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -3210,11 +3202,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">start-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3226,7 +3214,11 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div><div class="param">page-token (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">start-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
     </div>  <!-- field-items -->
 
 
@@ -3451,23 +3443,19 @@ font-style: italic;
     <div class="method-summary">List contexts (<span class="nickname">listContexts</span>)</div>
     <div class="method-notes">List all contexts for an owner.</div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">owner-id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The unique ID of the owner of the context. Specify either this or owner-slug. default: null format: uuid</div><div class="param">owner-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A string that represents an organization. Specify either this or owner-id. Cannot be used for accounts. default: null </div><div class="param">owner-type (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. default: null </div>
-    </div>  <!-- field-items -->
 
 
 
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">page-token (optional)</div>
+      <div class="param">owner-id (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The unique ID of the owner of the context. Specify either this or owner-slug. default: null format: uuid</div><div class="param">owner-slug (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A string that represents an organization. Specify either this or owner-id. Cannot be used for accounts. default: null </div><div class="param">owner-type (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. default: null </div><div class="param">page-token (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
     </div>  <!-- field-items -->
@@ -3624,23 +3612,19 @@ font-style: italic;
     <div class="method-summary">Get a list of pipelines (<span class="nickname">listPipelines</span>)</div>
     <div class="method-notes">Returns all pipelines for the most recently built projects (max 250) you follow in an organization.</div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">org-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Org slug in the form <code>vcs-slug/org-name</code> default: null </div><div class="param">mine (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Only include entries created by your user. default: null </div>
-    </div>  <!-- field-items -->
 
 
 
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">page-token (optional)</div>
+      <div class="param">org-slug (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Org slug in the form <code>vcs-slug/org-name</code> default: null </div><div class="param">page-token (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">mine (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Only include entries created by your user. default: null </div>
     </div>  <!-- field-items -->
 
 

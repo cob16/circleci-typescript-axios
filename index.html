@@ -180,7 +180,7 @@ font-style: italic;
   </head>
   <body>
   <h1>CircleCI API</h1>
-    <div class="app-desc">This describes the resources that make up the CircleCI API v2. API v2 is currently in Preview. Additional documentation for this API can be found in the <a href="https://github.com/CircleCI-Public/api-preview-docs/tree/master/docs">API Preview Docs</a>. Breaking changes to the API will be announced in the <a href="https://github.com/CircleCI-Public/api-preview-docs/blob/master/docs/breaking.md">Breaking Changes log</a>.</div>
+    <div class="app-desc">This describes the resources that make up the CircleCI API v2.</div>
     <div class="app-desc">More information: <a href="https://openapi-generator.tech">https://openapi-generator.tech</a></div>
     <div class="app-desc">Contact Info: <a href="team@openapitools.org">team@openapitools.org</a></div>
     <div class="app-desc">Version: v2</div>
@@ -233,37 +233,6 @@ font-style: italic;
   <li><a href="#listPipelinesForProject"><code><span class="http-method">get</span> /project/{project-slug}/pipeline</code></a></li>
   <li><a href="#listWorkflowsByPipelineId"><code><span class="http-method">get</span> /pipeline/{pipeline-id}/workflow</code></a></li>
   <li><a href="#triggerPipeline"><code><span class="http-method">post</span> /project/{project-slug}/pipeline</code></a></li>
-  </ul>
-  <h4><a href="#Preview">Preview</a></h4>
-  <ul>
-  <li><a href="#addEnvironmentVariableToContext"><code><span class="http-method">put</span> /context/{context-id}/environment-variable/{env-var-name}</code></a></li>
-  <li><a href="#cancelJob"><code><span class="http-method">post</span> /project/{project-slug}/job/{job-number}/cancel</code></a></li>
-  <li><a href="#createCheckoutKey"><code><span class="http-method">post</span> /project/{project-slug}/checkout-key</code></a></li>
-  <li><a href="#createContext"><code><span class="http-method">post</span> /context</code></a></li>
-  <li><a href="#createEnvVar"><code><span class="http-method">post</span> /project/{project-slug}/envvar</code></a></li>
-  <li><a href="#deleteCheckoutKey"><code><span class="http-method">delete</span> /project/{project-slug}/checkout-key/{fingerprint}</code></a></li>
-  <li><a href="#deleteContext"><code><span class="http-method">delete</span> /context/{context-id}</code></a></li>
-  <li><a href="#deleteEnvVar"><code><span class="http-method">delete</span> /project/{project-slug}/envvar/{name}</code></a></li>
-  <li><a href="#deleteEnvironmentVariableFromContext"><code><span class="http-method">delete</span> /context/{context-id}/environment-variable/{env-var-name}</code></a></li>
-  <li><a href="#getCheckoutKey"><code><span class="http-method">get</span> /project/{project-slug}/checkout-key/{fingerprint}</code></a></li>
-  <li><a href="#getCollaborations"><code><span class="http-method">get</span> /me/collaborations</code></a></li>
-  <li><a href="#getContext"><code><span class="http-method">get</span> /context/{context-id}</code></a></li>
-  <li><a href="#getCurrentUser"><code><span class="http-method">get</span> /me</code></a></li>
-  <li><a href="#getEnvVar"><code><span class="http-method">get</span> /project/{project-slug}/envvar/{name}</code></a></li>
-  <li><a href="#getJobArtifacts"><code><span class="http-method">get</span> /project/{project-slug}/{job-number}/artifacts</code></a></li>
-  <li><a href="#getJobDetails"><code><span class="http-method">get</span> /project/{project-slug}/job/{job-number}</code></a></li>
-  <li><a href="#getProjectBySlug"><code><span class="http-method">get</span> /project/{project-slug}</code></a></li>
-  <li><a href="#getProjectJobRuns"><code><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs/{job-name}</code></a></li>
-  <li><a href="#getProjectWorkflowJobMetrics"><code><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs</code></a></li>
-  <li><a href="#getProjectWorkflowMetrics"><code><span class="http-method">get</span> /insights/{project-slug}/workflows</code></a></li>
-  <li><a href="#getProjectWorkflowRuns"><code><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}</code></a></li>
-  <li><a href="#getTests"><code><span class="http-method">get</span> /project/{project-slug}/{job-number}/tests</code></a></li>
-  <li><a href="#getUser"><code><span class="http-method">get</span> /user/{id}</code></a></li>
-  <li><a href="#listCheckoutKeys"><code><span class="http-method">get</span> /project/{project-slug}/checkout-key</code></a></li>
-  <li><a href="#listContexts"><code><span class="http-method">get</span> /context</code></a></li>
-  <li><a href="#listEnvVars"><code><span class="http-method">get</span> /project/{project-slug}/envvar</code></a></li>
-  <li><a href="#listEnvironmentVariablesFromContext"><code><span class="http-method">get</span> /context/{context-id}/environment-variable</code></a></li>
-  <li><a href="#listPipelines"><code><span class="http-method">get</span> /pipeline</code></a></li>
   </ul>
   <h4><a href="#Project">Project</a></h4>
   <ul>
@@ -353,6 +322,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The new environment variable
         <a href="#inline_response_200_1_items">inline_response_200_1_items</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="createContext"/>
@@ -407,6 +379,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The new context
         <a href="#Context">Context</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteContext"/>
@@ -453,6 +428,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A confirmation message
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteEnvironmentVariableFromContext"/>
@@ -501,6 +479,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A confirmation message
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getContext"/>
@@ -549,6 +530,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The context
         <a href="#Context">Context</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listContexts"/>
@@ -610,6 +594,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of contexts
         <a href="#inline_response_200">inline_response_200</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listEnvironmentVariablesFromContext"/>
@@ -665,6 +652,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of environment variables
         <a href="#inline_response_200_1">inline_response_200_1</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Insights">Insights</a></h1>
@@ -673,7 +663,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs/{job-name}</code></pre></div>
     <div class="method-summary">Get recent runs of a workflow job (<span class="nickname">getProjectJobRuns</span>)</div>
-    <div class="method-notes">Get recent runs of a job within a workflow. Runs going back at most 90 days are returned.</div>
+    <div class="method-notes">Get recent runs of a job within a workflow. Runs going back at most 90 days are returned. Please note that Insights is not a real time financial reporting tool and should not be used for credit reporting. The most up to date credit information can be found in Plan Overview in the CircleCI UI.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -741,6 +731,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of recent job runs
         <a href="#inline_response_200_5">inline_response_200_5</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowJobMetrics"/>
@@ -748,7 +741,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs</code></pre></div>
     <div class="method-summary">Get summary metrics for a project workflow's jobs. (<span class="nickname">getProjectWorkflowJobMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project workflow's jobs. Job runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
+    <div class="method-notes">Get summary metrics for a project workflow's jobs. Job runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours. Please note that Insights is not a real time financial reporting tool and should not be used for credit reporting. The most up to date credit information can be found in Plan Overview in the CircleCI UI.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -838,6 +831,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of summary metrics by workflow job.
         <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowMetrics"/>
@@ -845,13 +841,15 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows</code></pre></div>
     <div class="method-summary">Get summary metrics for a project's workflows (<span class="nickname">getProjectWorkflowMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
+    <div class="method-notes">Get summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours. Please note that Insights is not a real time financial reporting tool and should not be used for credit reporting. The most up to date credit information can be found in Plan Overview in the CircleCI UI.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
       <div class="param">project-slug (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">reporting-window (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The time window used to calculate summary metrics. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -935,6 +933,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of summary metrics by workflow
         <a href="#inline_response_200_2">inline_response_200_2</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectWorkflowRuns"/>
@@ -942,7 +943,7 @@ font-style: italic;
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}</code></pre></div>
     <div class="method-summary">Get recent runs of a workflow (<span class="nickname">getProjectWorkflowRuns</span>)</div>
-    <div class="method-notes">Get recent runs of a workflow. Runs going back at most 90 days are returned.</div>
+    <div class="method-notes">Get recent runs of a workflow. Runs going back at most 90 days are returned. Please note that Insights is not a real time financial reporting tool and should not be used for credit reporting. The most up to date credit information can be found in Plan Overview in the CircleCI UI.</div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -1010,6 +1011,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of recent workflow runs
         <a href="#inline_response_200_3">inline_response_200_3</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Job">Job</a></h1>
@@ -1059,6 +1063,9 @@ font-style: italic;
     <h4 class="field-label">202</h4>
     
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getJobArtifacts"/>
@@ -1116,6 +1123,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of the job's artifacts.
         <a href="#ArtifactListResponse">ArtifactListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getJobDetails"/>
@@ -1213,6 +1223,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Job details.
         <a href="#Job_Details">Job_Details</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getTests"/>
@@ -1278,6 +1291,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of test results.
         <a href="#TestsResponse">TestsResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Pipeline">Pipeline</a></h1>
@@ -1315,6 +1331,7 @@ font-style: italic;
   "number" : 0,
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "vcs" : {
+    "review_id" : "123",
     "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
     "commit" : {
       "subject" : "subject",
@@ -1357,6 +1374,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A pipeline object.
         <a href="#Pipeline">Pipeline</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getPipelineByNumber"/>
@@ -1395,6 +1415,7 @@ font-style: italic;
   "number" : 0,
   "updated_at" : "2000-01-23T04:56:07.000+00:00",
   "vcs" : {
+    "review_id" : "123",
     "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
     "commit" : {
       "subject" : "subject",
@@ -1437,6 +1458,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A pipeline object.
         <a href="#Pipeline">Pipeline</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getPipelineConfigById"/>
@@ -1484,6 +1508,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The configuration strings for the pipeline.
         <a href="#PipelineConfig">PipelineConfig</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listMyPipelines"/>
@@ -1528,6 +1555,7 @@ font-style: italic;
     "number" : 0,
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "vcs" : {
+      "review_id" : "123",
       "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
       "commit" : {
         "subject" : "subject",
@@ -1562,6 +1590,7 @@ font-style: italic;
     "number" : 0,
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "vcs" : {
+      "review_id" : "123",
       "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
       "commit" : {
         "subject" : "subject",
@@ -1605,6 +1634,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A sequence of pipelines.
         <a href="#PipelineListResponse">PipelineListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listPipelines"/>
@@ -1647,6 +1679,7 @@ font-style: italic;
     "number" : 0,
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "vcs" : {
+      "review_id" : "123",
       "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
       "commit" : {
         "subject" : "subject",
@@ -1681,6 +1714,7 @@ font-style: italic;
     "number" : 0,
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "vcs" : {
+      "review_id" : "123",
       "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
       "commit" : {
         "subject" : "subject",
@@ -1724,6 +1758,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A sequence of pipelines.
         <a href="#PipelineListResponse">PipelineListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listPipelinesForProject"/>
@@ -1770,6 +1807,7 @@ font-style: italic;
     "number" : 0,
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "vcs" : {
+      "review_id" : "123",
       "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
       "commit" : {
         "subject" : "subject",
@@ -1804,6 +1842,7 @@ font-style: italic;
     "number" : 0,
     "updated_at" : "2000-01-23T04:56:07.000+00:00",
     "vcs" : {
+      "review_id" : "123",
       "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
       "commit" : {
         "subject" : "subject",
@@ -1847,6 +1886,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A sequence of pipelines.
         <a href="#PipelineListResponse">PipelineListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listWorkflowsByPipelineId"/>
@@ -1924,6 +1966,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of workflow objects.
         <a href="#WorkflowListResponse">WorkflowListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="triggerPipeline"/>
@@ -1995,1733 +2040,9 @@ font-style: italic;
     <h4 class="field-label">201</h4>
     The created pipeline.
         <a href="#PipelineCreation">PipelineCreation</a>
-  </div> <!-- method -->
-  <hr/>
-  <h1><a name="Preview">Preview</a></h1>
-  <div class="method"><a name="addEnvironmentVariableToContext"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /context/{context-id}/environment-variable/{env-var-name}</code></pre></div>
-    <div class="method-summary">Add or update an environment variable (<span class="nickname">addEnvironmentVariableToContext</span>)</div>
-    <div class="method-notes">Create or update an environment variable within a context. Returns information about the environment variable, not including its value.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">context-id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div><div class="param">env-var-name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable default: null </div>
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">inline_object_1 <a href="#inline_object_1">inline_object_1</a> (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#inline_response_200_1_items">inline_response_200_1_items</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "variable" : "POSTGRES_USER",
-  "created_at" : "2015-09-21T17:29:21.042Z",
-  "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    The new environment variable
-        <a href="#inline_response_200_1_items">inline_response_200_1_items</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="cancelJob"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /project/{project-slug}/job/{job-number}/cancel</code></pre></div>
-    <div class="method-summary">Cancel job (<span class="nickname">cancelJob</span>)</div>
-    <div class="method-notes">Cancel job with a given job number.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">job-number (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The number of the job. default: null </div><div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#MessageResponse">MessageResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "message" : "message"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">202</h4>
-    
-        <a href="#MessageResponse">MessageResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="createCheckoutKey"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /project/{project-slug}/checkout-key</code></pre></div>
-    <div class="method-summary">Create a new checkout key (<span class="nickname">createCheckoutKey</span>)</div>
-    <div class="method-notes">Creates a new checkout key. This API request is only usable with a user API token.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">CheckoutKeyInput <a href="#CheckoutKeyInput">CheckoutKeyInput</a> (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#CheckoutKey">CheckoutKey</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "fingerprint" : "c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f",
-  "public-key" : "ssh-rsa ...",
-  "created-at" : "2015-09-21T17:29:21.042Z",
-  "type" : "deploy-key",
-  "preferred" : true
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">201</h4>
-    The checkout key.
-        <a href="#CheckoutKey">CheckoutKey</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="createContext"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /context</code></pre></div>
-    <div class="method-summary">Create a new context (<span class="nickname">createContext</span>)</div>
-    <div class="method-notes"></div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">inline_object <a href="#inline_object">inline_object</a> (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Context">Context</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "name",
-  "created_at" : "2015-09-21T17:29:21.042Z",
-  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    The new context
-        <a href="#Context">Context</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="createEnvVar"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /project/{project-slug}/envvar</code></pre></div>
-    <div class="method-summary">Create an environment variable (<span class="nickname">createEnvVar</span>)</div>
-    <div class="method-notes">Creates a new environment variable.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">EnvironmentVariablePair_1 <a href="#EnvironmentVariablePair_1">EnvironmentVariablePair_1</a> (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#EnvironmentVariablePair">EnvironmentVariablePair</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "foo",
-  "value" : "xxxx1234"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">201</h4>
-    The environment variable.
-        <a href="#EnvironmentVariablePair">EnvironmentVariablePair</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="deleteCheckoutKey"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /project/{project-slug}/checkout-key/{fingerprint}</code></pre></div>
-    <div class="method-summary">Delete a checkout key (<span class="nickname">deleteCheckoutKey</span>)</div>
-    <div class="method-notes">Deletes the checkout key.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">fingerprint (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; An SSH key fingerprint. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#MessageResponse">MessageResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "message" : "message"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A confirmation message.
-        <a href="#MessageResponse">MessageResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="deleteContext"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /context/{context-id}</code></pre></div>
-    <div class="method-summary">Delete a context (<span class="nickname">deleteContext</span>)</div>
-    <div class="method-notes"></div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">context-id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#MessageResponse">MessageResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "message" : "message"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A confirmation message
-        <a href="#MessageResponse">MessageResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="deleteEnvVar"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /project/{project-slug}/envvar/{name}</code></pre></div>
-    <div class="method-summary">Delete an environment variable (<span class="nickname">deleteEnvVar</span>)</div>
-    <div class="method-notes">Deletes the environment variable named :name.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#MessageResponse">MessageResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "message" : "message"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A confirmation message.
-        <a href="#MessageResponse">MessageResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="deleteEnvironmentVariableFromContext"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /context/{context-id}/environment-variable/{env-var-name}</code></pre></div>
-    <div class="method-summary">Remove an environment variable (<span class="nickname">deleteEnvironmentVariableFromContext</span>)</div>
-    <div class="method-notes">Delete an environment variable from a context.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">env-var-name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable default: null </div><div class="param">context-id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#MessageResponse">MessageResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "message" : "message"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A confirmation message
-        <a href="#MessageResponse">MessageResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getCheckoutKey"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}/checkout-key/{fingerprint}</code></pre></div>
-    <div class="method-summary">Get a checkout key (<span class="nickname">getCheckoutKey</span>)</div>
-    <div class="method-notes">Returns an individual checkout key.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">fingerprint (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; An SSH key fingerprint. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#CheckoutKey">CheckoutKey</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "fingerprint" : "c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f",
-  "public-key" : "ssh-rsa ...",
-  "created-at" : "2015-09-21T17:29:21.042Z",
-  "type" : "deploy-key",
-  "preferred" : true
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    The checkout key.
-        <a href="#CheckoutKey">CheckoutKey</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getCollaborations"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /me/collaborations</code></pre></div>
-    <div class="method-summary">Collaborations (<span class="nickname">getCollaborations</span>)</div>
-    <div class="method-notes"><p>Provides the set of organizations of which a user is a member or a collaborator.</p>
-<p>The set of organizations that a user can collaborate on is composed of:</p>
-<ul>
-<li>Organizations that the current user belongs to across VCS types (e.g. BitBucket, GitHub)</li>
-<li>The parent organization of repository that the user can collaborate on, but is not necessarily a member of</li>
-<li>The organization of the current user's account</li>
-</ul>
-</div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      array[<a href="#Collaboration">Collaboration</a>]
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "vcs-type" : "vcs-type",
-  "avatar_url" : "avatar_url",
-  "name" : "name"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Collaborations
-        
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getContext"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /context/{context-id}</code></pre></div>
-    <div class="method-summary">Get a context (<span class="nickname">getContext</span>)</div>
-    <div class="method-notes">Returns basic information about a context.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">context-id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Context">Context</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "name",
-  "created_at" : "2015-09-21T17:29:21.042Z",
-  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    The context
-        <a href="#Context">Context</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getCurrentUser"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /me</code></pre></div>
-    <div class="method-summary">User Information (<span class="nickname">getCurrentUser</span>)</div>
-    <div class="method-notes">Provides information about the user that is currently signed in.</div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#User">User</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "name",
-  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-  "login" : "login"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    User login information.
-        <a href="#User">User</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getEnvVar"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}/envvar/{name}</code></pre></div>
-    <div class="method-summary">Get a masked environment variable (<span class="nickname">getEnvVar</span>)</div>
-    <div class="method-notes">Returns the masked value of environment variable :name.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the environment variable. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#EnvironmentVariablePair">EnvironmentVariablePair</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "foo",
-  "value" : "xxxx1234"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    The environment variable.
-        <a href="#EnvironmentVariablePair">EnvironmentVariablePair</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getJobArtifacts"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}/{job-number}/artifacts</code></pre></div>
-    <div class="method-summary">Get a job's artifacts (<span class="nickname">getJobArtifacts</span>)</div>
-    <div class="method-notes">Returns a job's artifacts.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">job-number (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The number of the job. default: null </div><div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#ArtifactListResponse">ArtifactListResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "path" : "path",
-    "node_index" : 0,
-    "url" : "url"
-  }, {
-    "path" : "path",
-    "node_index" : 0,
-    "url" : "url"
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of the job's artifacts.
-        <a href="#ArtifactListResponse">ArtifactListResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getJobDetails"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}/job/{job-number}</code></pre></div>
-    <div class="method-summary">Get job details (<span class="nickname">getJobDetails</span>)</div>
-    <div class="method-notes">Returns job details.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">job-number (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The number of the job. default: null </div><div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Job_Details">Job_Details</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "latest_workflow" : {
-    "name" : "build-and-test",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-  },
-  "queued_at" : "2000-01-23T04:56:07.000+00:00",
-  "parallelism" : 6,
-  "project" : {
-    "external_url" : "https://github.com/CircleCI-Public/api-preview-docs",
-    "name" : "api-preview-docs",
-    "slug" : "gh/CircleCI-Public/api-preview-docs"
-  },
-  "created_at" : "2000-01-23T04:56:07.000+00:00",
-  "contexts" : [ {
-    "name" : "name"
-  }, {
-    "name" : "name"
-  } ],
-  "pipeline" : {
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-  },
-  "duration" : 5,
-  "number" : 1,
-  "web_url" : "web_url",
-  "executor" : {
-    "resource_class" : "resource_class",
-    "type" : "type"
-  },
-  "organization" : {
-    "name" : "name"
-  },
-  "name" : "name",
-  "started_at" : "2000-01-23T04:56:07.000+00:00",
-  "messages" : [ {
-    "reason" : "reason",
-    "type" : "type",
-    "message" : "message"
-  }, {
-    "reason" : "reason",
-    "type" : "type",
-    "message" : "message"
-  } ],
-  "parallel_runs" : [ {
-    "index" : 0,
-    "status" : "status"
-  }, {
-    "index" : 0,
-    "status" : "status"
-  } ],
-  "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-  "status" : ""
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Job details.
-        <a href="#Job_Details">Job_Details</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getProjectBySlug"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}</code></pre></div>
-    <div class="method-summary">Get a project (<span class="nickname">getProjectBySlug</span>)</div>
-    <div class="method-notes">Retrieves a project by project slug.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Project">Project</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "api-preview-docs",
-  "vcs_info" : {
-    "provider" : "Bitbucket",
-    "vcs_url" : "https://github.com/CircleCI-Public/api-preview-docs",
-    "default_branch" : "master"
-  },
-  "organization_name" : "CircleCI-Public",
-  "slug" : "gh/CircleCI-Public/api-preview-docs"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A project object
-        <a href="#Project">Project</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getProjectJobRuns"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs/{job-name}</code></pre></div>
-    <div class="method-summary">Get recent runs of a workflow job (<span class="nickname">getProjectJobRuns</span>)</div>
-    <div class="method-notes">Get recent runs of a job within a workflow. Runs going back at most 90 days are returned.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div><div class="param">job-name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the job. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">branch (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div><div class="param">page-token (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">start-date (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#inline_response_200_5">inline_response_200_5</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "started_at" : "2000-01-23T04:56:07.000+00:00",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits_used" : 0,
-    "status" : "success"
-  }, {
-    "started_at" : "2000-01-23T04:56:07.000+00:00",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits_used" : 0,
-    "status" : "success"
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of recent job runs
-        <a href="#inline_response_200_5">inline_response_200_5</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getProjectWorkflowJobMetrics"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs</code></pre></div>
-    <div class="method-summary">Get summary metrics for a project workflow's jobs. (<span class="nickname">getProjectWorkflowJobMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project workflow's jobs. Job runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">page-token (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">branch (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#inline_response_200_4">inline_response_200_4</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "window_end" : "2000-01-23T04:56:07.000+00:00",
-    "name" : "name",
-    "window_start" : "2000-01-23T04:56:07.000+00:00",
-    "metrics" : {
-      "total_runs" : 0,
-      "successful_runs" : 0,
-      "failed_runs" : 0,
-      "total_credits_used" : 0,
-      "duration_metrics" : {
-        "min" : 0,
-        "median" : 0,
-        "max" : 0,
-        "mean" : 0,
-        "standard_deviation" : 7.386282,
-        "p95" : 0
-      },
-      "throughput" : 5.637377,
-      "success_rate" : 0.8008282
-    }
-  }, {
-    "window_end" : "2000-01-23T04:56:07.000+00:00",
-    "name" : "name",
-    "window_start" : "2000-01-23T04:56:07.000+00:00",
-    "metrics" : {
-      "total_runs" : 0,
-      "successful_runs" : 0,
-      "failed_runs" : 0,
-      "total_credits_used" : 0,
-      "duration_metrics" : {
-        "min" : 0,
-        "median" : 0,
-        "max" : 0,
-        "mean" : 0,
-        "standard_deviation" : 7.386282,
-        "p95" : 0
-      },
-      "throughput" : 5.637377,
-      "success_rate" : 0.8008282
-    }
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of summary metrics by workflow job.
-        <a href="#inline_response_200_4">inline_response_200_4</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getProjectWorkflowMetrics"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows</code></pre></div>
-    <div class="method-summary">Get summary metrics for a project's workflows (<span class="nickname">getProjectWorkflowMetrics</span>)</div>
-    <div class="method-notes">Get summary metrics for a project's workflows. Workflow runs going back at most 90 days are included in the aggregation window. Metrics are refreshed daily, and thus may not include executions from the last 24 hours.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">page-token (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">branch (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#inline_response_200_2">inline_response_200_2</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "window_end" : "2000-01-23T04:56:07.000+00:00",
-    "name" : "build-and-test",
-    "window_start" : "2000-01-23T04:56:07.000+00:00",
-    "metrics" : {
-      "total_runs" : 0,
-      "successful_runs" : 0,
-      "mttr" : 0,
-      "failed_runs" : 0,
-      "total_credits_used" : 0,
-      "duration_metrics" : {
-        "min" : 0,
-        "median" : 0,
-        "max" : 0,
-        "mean" : 0,
-        "standard_deviation" : 1.2315135,
-        "p95" : 0
-      },
-      "throughput" : 5.637377,
-      "success_rate" : 0.8008282
-    }
-  }, {
-    "window_end" : "2000-01-23T04:56:07.000+00:00",
-    "name" : "build-and-test",
-    "window_start" : "2000-01-23T04:56:07.000+00:00",
-    "metrics" : {
-      "total_runs" : 0,
-      "successful_runs" : 0,
-      "mttr" : 0,
-      "failed_runs" : 0,
-      "total_credits_used" : 0,
-      "duration_metrics" : {
-        "min" : 0,
-        "median" : 0,
-        "max" : 0,
-        "mean" : 0,
-        "standard_deviation" : 1.2315135,
-        "p95" : 0
-      },
-      "throughput" : 5.637377,
-      "success_rate" : 0.8008282
-    }
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of summary metrics by workflow
-        <a href="#inline_response_200_2">inline_response_200_2</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getProjectWorkflowRuns"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}</code></pre></div>
-    <div class="method-summary">Get recent runs of a workflow (<span class="nickname">getProjectWorkflowRuns</span>)</div>
-    <div class="method-notes">Get recent runs of a workflow. Runs going back at most 90 days are returned.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">branch (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. default: null </div><div class="param">page-token (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">start-date (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started at or after this date. This must be specified if an end-date is provided. default: null format: date-time</div><div class="param">end-date (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Include only executions that started before this date. This date can be at most 90 days after the start-date. default: null format: date-time</div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#inline_response_200_3">inline_response_200_3</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "duration" : 0,
-    "created_at" : "2000-01-23T04:56:07.000+00:00",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits_used" : 0,
-    "status" : "success"
-  }, {
-    "duration" : 0,
-    "created_at" : "2000-01-23T04:56:07.000+00:00",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "stopped_at" : "2000-01-23T04:56:07.000+00:00",
-    "credits_used" : 0,
-    "status" : "success"
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of recent workflow runs
-        <a href="#inline_response_200_3">inline_response_200_3</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getTests"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}/{job-number}/tests</code></pre></div>
-    <div class="method-summary">Get test metadata (<span class="nickname">getTests</span>)</div>
-    <div class="method-notes">Get test metadata for a build.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">job-number (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The number of the job. default: null </div><div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#TestsResponse">TestsResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "result" : "result",
-    "file" : "file",
-    "run_time" : 0.8008281904610115,
-    "classname" : "classname",
-    "name" : "name",
-    "source" : "source",
-    "message" : "message"
-  }, {
-    "result" : "result",
-    "file" : "file",
-    "run_time" : 0.8008281904610115,
-    "classname" : "classname",
-    "name" : "name",
-    "source" : "source",
-    "message" : "message"
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of test results.
-        <a href="#TestsResponse">TestsResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="getUser"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /user/{id}</code></pre></div>
-    <div class="method-summary">User Information (<span class="nickname">getUser</span>)</div>
-    <div class="method-notes">Provides information about the user with the given ID.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The unique ID of the user. default: null format: uuid</div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#User">User</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "name",
-  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-  "login" : "login"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    User login information.
-        <a href="#User">User</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="listCheckoutKeys"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}/checkout-key</code></pre></div>
-    <div class="method-summary">Get all checkout keys (<span class="nickname">listCheckoutKeys</span>)</div>
-    <div class="method-notes">Returns a sequence of checkout keys for <code>:project</code>.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#CheckoutKeyListResponse">CheckoutKeyListResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "fingerprint" : "c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f",
-    "public-key" : "ssh-rsa ...",
-    "created-at" : "2015-09-21T17:29:21.042Z",
-    "type" : "deploy-key",
-    "preferred" : true
-  }, {
-    "fingerprint" : "c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f",
-    "public-key" : "ssh-rsa ...",
-    "created-at" : "2015-09-21T17:29:21.042Z",
-    "type" : "deploy-key",
-    "preferred" : true
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A sequence of checkout keys.
-        <a href="#CheckoutKeyListResponse">CheckoutKeyListResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="listContexts"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /context</code></pre></div>
-    <div class="method-summary">List contexts (<span class="nickname">listContexts</span>)</div>
-    <div class="method-notes">List all contexts for an owner.</div>
-
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">owner-id (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The unique ID of the owner of the context. Specify either this or owner-slug. default: null format: uuid</div><div class="param">owner-slug (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A string that represents an organization. Specify either this or owner-id. Cannot be used for accounts. default: null </div><div class="param">owner-type (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. default: null </div><div class="param">page-token (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#inline_response_200">inline_response_200</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "name" : "name",
-    "created_at" : "2015-09-21T17:29:21.042Z",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-  }, {
-    "name" : "name",
-    "created_at" : "2015-09-21T17:29:21.042Z",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of contexts
-        <a href="#inline_response_200">inline_response_200</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="listEnvVars"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /project/{project-slug}/envvar</code></pre></div>
-    <div class="method-summary">List all environment variables (<span class="nickname">listEnvVars</span>)</div>
-    <div class="method-notes">Returns four 'x' characters, in addition to the last four ASCII characters of the value, consistent with the display of environment variable values on the CircleCI website.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">project-slug (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#EnvironmentVariableListResponse">EnvironmentVariableListResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "name" : "foo",
-    "value" : "xxxx1234"
-  }, {
-    "name" : "foo",
-    "value" : "xxxx1234"
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A sequence of environment variables.
-        <a href="#EnvironmentVariableListResponse">EnvironmentVariableListResponse</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="listEnvironmentVariablesFromContext"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /context/{context-id}/environment-variable</code></pre></div>
-    <div class="method-summary">List environment variables (<span class="nickname">listEnvironmentVariablesFromContext</span>)</div>
-    <div class="method-notes">List information about environment variables in a context, not including their values.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">context-id (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the context (UUID) default: null format: uuid</div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#inline_response_200_1">inline_response_200_1</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "variable" : "POSTGRES_USER",
-    "created_at" : "2015-09-21T17:29:21.042Z",
-    "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-  }, {
-    "variable" : "POSTGRES_USER",
-    "created_at" : "2015-09-21T17:29:21.042Z",
-    "context_id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91"
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A paginated list of environment variables
-        <a href="#inline_response_200_1">inline_response_200_1</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="listPipelines"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /pipeline</code></pre></div>
-    <div class="method-summary">Get a list of pipelines (<span class="nickname">listPipelines</span>)</div>
-    <div class="method-notes">Returns all pipelines for the most recently built projects (max 250) you follow in an organization.</div>
-
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">org-slug (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Org slug in the form <code>vcs-slug/org-name</code> default: null </div><div class="param">page-token (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">mine (optional)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Only include entries created by your user. default: null </div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#PipelineListResponse">PipelineListResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "next_page_token" : "next_page_token",
-  "items" : [ {
-    "project_slug" : "gh/CircleCI-Public/api-preview-docs",
-    "number" : 0,
-    "updated_at" : "2000-01-23T04:56:07.000+00:00",
-    "vcs" : {
-      "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
-      "commit" : {
-        "subject" : "subject",
-        "body" : "body"
-      },
-      "tag" : "v3.1.4159",
-      "provider_name" : "GitHub",
-      "origin_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
-      "branch" : "feature/design-new-api",
-      "revision" : "f454a02b5d10fcccfd7d9dd7608a76d6493a98b4"
-    },
-    "created_at" : "2000-01-23T04:56:07.000+00:00",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "state" : "created",
-    "trigger" : {
-      "actor" : {
-        "avatar_url" : "avatar_url",
-        "login" : "login"
-      },
-      "received_at" : "2000-01-23T04:56:07.000+00:00",
-      "type" : "explicit"
-    },
-    "errors" : [ {
-      "type" : "config",
-      "message" : "message"
-    }, {
-      "type" : "config",
-      "message" : "message"
-    } ]
-  }, {
-    "project_slug" : "gh/CircleCI-Public/api-preview-docs",
-    "number" : 0,
-    "updated_at" : "2000-01-23T04:56:07.000+00:00",
-    "vcs" : {
-      "target_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
-      "commit" : {
-        "subject" : "subject",
-        "body" : "body"
-      },
-      "tag" : "v3.1.4159",
-      "provider_name" : "GitHub",
-      "origin_repository_url" : "https://github.com/CircleCI-Public/api-preview-docs",
-      "branch" : "feature/design-new-api",
-      "revision" : "f454a02b5d10fcccfd7d9dd7608a76d6493a98b4"
-    },
-    "created_at" : "2000-01-23T04:56:07.000+00:00",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "state" : "created",
-    "trigger" : {
-      "actor" : {
-        "avatar_url" : "avatar_url",
-        "login" : "login"
-      },
-      "received_at" : "2000-01-23T04:56:07.000+00:00",
-      "type" : "explicit"
-    },
-    "errors" : [ {
-      "type" : "config",
-      "message" : "message"
-    }, {
-      "type" : "config",
-      "message" : "message"
-    } ]
-  } ]
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    A sequence of pipelines.
-        <a href="#PipelineListResponse">PipelineListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Project">Project</a></h1>
@@ -3785,6 +2106,9 @@ font-style: italic;
     <h4 class="field-label">201</h4>
     The checkout key.
         <a href="#CheckoutKey">CheckoutKey</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="createEnvVar"/>
@@ -3844,6 +2168,9 @@ font-style: italic;
     <h4 class="field-label">201</h4>
     The environment variable.
         <a href="#EnvironmentVariablePair">EnvironmentVariablePair</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteCheckoutKey"/>
@@ -3892,6 +2219,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A confirmation message.
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="deleteEnvVar"/>
@@ -3940,6 +2270,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A confirmation message.
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getCheckoutKey"/>
@@ -3992,6 +2325,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The checkout key.
         <a href="#CheckoutKey">CheckoutKey</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getEnvVar"/>
@@ -4041,6 +2377,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The environment variable.
         <a href="#EnvironmentVariablePair">EnvironmentVariablePair</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getProjectBySlug"/>
@@ -4094,6 +2433,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A project object
         <a href="#Project">Project</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listCheckoutKeys"/>
@@ -4153,6 +2495,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A sequence of checkout keys.
         <a href="#CheckoutKeyListResponse">CheckoutKeyListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listEnvVars"/>
@@ -4206,6 +2551,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A sequence of environment variables.
         <a href="#EnvironmentVariableListResponse">EnvironmentVariableListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="User">User</a></h1>
@@ -4256,6 +2604,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Collaborations
         
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getCurrentUser"/>
@@ -4298,6 +2649,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     User login information.
         <a href="#User">User</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getUser"/>
@@ -4346,6 +2700,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     User login information.
         <a href="#User">User</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <h1><a name="Workflow">Workflow</a></h1>
@@ -4395,6 +2752,9 @@ font-style: italic;
     <h4 class="field-label">202</h4>
     A confirmation message.
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="cancelWorkflow"/>
@@ -4441,6 +2801,9 @@ font-style: italic;
     <h4 class="field-label">202</h4>
     A confirmation message.
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getWorkflowById"/>
@@ -4497,6 +2860,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A workflow object.
         <a href="#Workflow">Workflow</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="listWorkflowJobs"/>
@@ -4570,6 +2936,9 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated sequence of jobs.
         <a href="#WorkflowJobListResponse">WorkflowJobListResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="rerunWorkflow"/>
@@ -4628,6 +2997,9 @@ font-style: italic;
     <h4 class="field-label">202</h4>
     A confirmation message.
         <a href="#MessageResponse">MessageResponse</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
   </div> <!-- method -->
   <hr/>
 
@@ -4676,7 +3048,6 @@ font-style: italic;
     <li><a href="#Workflow"><code>Workflow</code> - </a></li>
     <li><a href="#WorkflowJobListResponse"><code>WorkflowJobListResponse</code> - </a></li>
     <li><a href="#WorkflowListResponse"><code>WorkflowListResponse</code> - </a></li>
-    <li><a href="#_context_owner"><code>_context_owner</code> - </a></li>
     <li><a href="#inline_object"><code>inline_object</code> - </a></li>
     <li><a href="#inline_object_1"><code>inline_object_1</code> - </a></li>
     <li><a href="#inline_response_200"><code>inline_response_200</code> - </a></li>
@@ -4694,6 +3065,7 @@ font-style: italic;
     <li><a href="#inline_response_200_4_metrics_duration_metrics"><code>inline_response_200_4_metrics_duration_metrics</code> - </a></li>
     <li><a href="#inline_response_200_5"><code>inline_response_200_5</code> - </a></li>
     <li><a href="#inline_response_200_5_items"><code>inline_response_200_5_items</code> - </a></li>
+    <li><a href="#inline_response_default"><code>inline_response_default</code> - </a></li>
   </ol>
 
   <div class="model">
@@ -4981,9 +3353,10 @@ font-style: italic;
 <div class="param">origin_repository_url </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> URL for the repository where the trigger originated. For fork-PR pipelines, this is the URL to the fork. For other pipelines the <code>origin_</code> and <code>target_repository_url</code>s will be the same. </div>
 <div class="param">target_repository_url </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> URL for the repository the trigger targets (i.e. the repository where the PR will be merged). For fork-PR pipelines, this is the URL to the parent repo. For other pipelines, the <code>origin_</code> and <code>target_repository_url</code>s will be the same. </div>
 <div class="param">revision </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The code revision the pipeline ran. </div>
-<div class="param">branch (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. </div>
+<div class="param">branch (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. To trigger a pipeline for a PR by number use <code>pull/&lt;number&gt;/head</code> for the PR ref or <code>pull/&lt;number&gt;/merge</code> for the merge ref (GitHub only). </div>
 <div class="param">tag (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The tag used by the pipeline. The commit that this tag points to was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. </div>
 <div class="param">commit (optional)</div><div class="param-desc"><span class="param-type"><a href="#PipelineListResponse_vcs_commit">PipelineListResponse_vcs_commit</a></span>  </div>
+<div class="param">review_id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The code review id. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -5048,7 +3421,7 @@ font-style: italic;
     <h3><a name="TriggerPipelineParameters"><code>TriggerPipelineParameters</code> - TriggerPipelineParameters</a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>The information you can supply when triggering a pipeline.</div>
     <div class="field-items">
-      <div class="param">branch (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. </div>
+      <div class="param">branch (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. To trigger a pipeline for a PR by number use <code>pull/&lt;number&gt;/head</code> for the PR ref or <code>pull/&lt;number&gt;/merge</code> for the merge ref (GitHub only). </div>
 <div class="param">tag (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The tag used by the pipeline. The commit that this tag points to was used for the pipeline. Note that <code>branch</code> and <code>tag</code> are mutually exclusive. </div>
 <div class="param">parameters (optional)</div><div class="param-desc"><span class="param-type"><a href="#anyOf<integer,string,boolean>">map[String, anyOf<integer,string,boolean>]</a></span> An object containing pipeline parameters and their values. </div>
     </div>  <!-- field-items -->
@@ -5098,22 +3471,11 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_context_owner"><code>_context_owner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the owner of the context. Specify either this or slug. format: uuid</div>
-<div class="param">slug (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> A string that represents an organization. Specify either this or id. Cannot be used for accounts. </div>
-<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The type of the owner. Defaults to &quot;organization&quot;. Accounts are only used as context owners in server. </div>
-        <div class="param-enum-header">Enum:</div>
-        <div class="param-enum">account</div><div class="param-enum">organization</div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
     <h3><a name="inline_object"><code>inline_object</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The user defined name of the context. </div>
-<div class="param">owner </div><div class="param-desc"><span class="param-type"><a href="#_context_owner">_context_owner</a></span>  </div>
+<div class="param">owner </div><div class="param-desc"><span class="param-type"><a href="#oneOf<object,object>">oneOf<object,object></a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -5176,7 +3538,7 @@ font-style: italic;
 <div class="param">successful_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of successful runs. format: int64</div>
 <div class="param">throughput </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The average number of workflow runs per day. format: float</div>
 <div class="param">mttr </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The mean time to recovery (mean time between failures and their next success) in seconds. format: int64</div>
-<div class="param">total_credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total credits consumed by the workflow in the aggregation window. format: int64</div>
+<div class="param">total_credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total credits consumed by the workflow in the aggregation window. Note that Insights is not a real time financial reporting tool and should not be used for credit reporting. format: int64</div>
 <div class="param">duration_metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_2_metrics_duration_metrics">inline_response_200_2_metrics_duration_metrics</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
@@ -5208,7 +3570,7 @@ font-style: italic;
 <div class="param">duration </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The duration in seconds of a run. format: int64</div>
 <div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow was created. format: date-time</div>
 <div class="param">stopped_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow stopped. format: date-time</div>
-<div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution format: int64</div>
+<div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution. Note that Insights is not a real time financial reporting tool and should not be used for credit reporting. format: int64</div>
 <div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Workflow status. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">success</div><div class="param-enum">failed</div><div class="param-enum">error</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
@@ -5241,7 +3603,7 @@ font-style: italic;
 <div class="param">failed_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of failed runs. format: int64</div>
 <div class="param">successful_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of successful runs. format: int64</div>
 <div class="param">throughput </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The average number of job runs per day. format: float</div>
-<div class="param">total_credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total credits consumed by the job in the aggregation window. format: int64</div>
+<div class="param">total_credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total credits consumed by the job in the aggregation window. Note that Insights is not a real time financial reporting tool and should not be used for credit reporting. format: int64</div>
 <div class="param">duration_metrics </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_4_metrics_duration_metrics">inline_response_200_4_metrics_duration_metrics</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
@@ -5275,7 +3637,14 @@ font-style: italic;
 <div class="param">status </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Job status. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">success</div><div class="param-enum">not_run</div><div class="param-enum">failed</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
-<div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution format: int64</div>
+<div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution. Note that Insights is not a real time financial reporting tool and should not be used for credit reporting. format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_default"><code>inline_response_default</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   </body>

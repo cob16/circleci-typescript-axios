@@ -10,8 +10,8 @@
   "scripts": {
     "prerelease": "npm version prerelease --preid=dev -m \"developer release %s\"",
     "download-open-api": "curl https://circleci.com/api/v2/openapi.yml > ./openapi.yaml",
-    "generate": "openapi-generator generate -i ./openapi.yaml -g typescript-axios -o generated-sources/",
-    "generate-doc": "openapi-generator generate -i ./openapi.yaml -g html -o doc/",
+    "generate": "openapi-generator-cli generate -i ./openapi.yaml -g typescript-axios -o generated-sources/",
+    "generate-doc": "openapi-generator-cli generate -i ./openapi.yaml -g html -o doc/",
     "compile": "tsc",
     "build": "npm run download-open-api && npm run generate && npm run generate-doc && npm run compile"
   },
@@ -35,7 +35,7 @@
     "@types/node": "^14.0.23"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "1.0.12-4.3.0",
-    "typescript": "^3.7.2"
+    "@openapitools/openapi-generator-cli": "2.1.10",
+    "typescript": "^4.1.3"
   }
 }

@@ -215,6 +215,7 @@ font-style: italic;
   <li><a href="#getProjectWorkflowJobMetrics"><code><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/jobs</code></a></li>
   <li><a href="#getProjectWorkflowMetrics"><code><span class="http-method">get</span> /insights/{project-slug}/workflows</code></a></li>
   <li><a href="#getProjectWorkflowRuns"><code><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}</code></a></li>
+  <li><a href="#getProjectWorkflowTestMetrics"><code><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/test-metrics</code></a></li>
   </ul>
   <h4><a href="#Job">Job</a></h4>
   <ul>
@@ -677,7 +678,8 @@ font-style: italic;
     <div class="field-items">
       <div class="param">branch (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. If not passed we will scope the API call to the default branch. default: null </div><div class="param">page-token (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. If not passed we will scope the API call to the default branch.
+Note - Querying all branches is not supported yet. default: null </div><div class="param">page-token (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">start-date (optional)</div>
 
@@ -755,7 +757,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">page-token (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">branch (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">all-branches (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Whether to retrieve data for all branches combined. default: null </div><div class="param">branch (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. If not passed we will scope the API call to the default branch. default: null </div><div class="param">reporting-window (optional)</div>
 
@@ -855,7 +859,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">page-token (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">branch (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; A token to retrieve the next page of results. default: null </div><div class="param">all-branches (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Whether to retrieve data for all branches combined. default: null </div><div class="param">branch (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. If not passed we will scope the API call to the default branch. default: null </div><div class="param">reporting-window (optional)</div>
 
@@ -959,7 +965,9 @@ font-style: italic;
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">branch (optional)</div>
+      <div class="param">all-branches (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Whether to retrieve data for all branches combined. default: null </div><div class="param">branch (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. If not passed we will scope the API call to the default branch. default: null </div><div class="param">page-token (optional)</div>
 
@@ -988,6 +996,7 @@ font-style: italic;
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
+    "branch" : "main",
     "credits_used" : 0,
     "status" : "success"
   }, {
@@ -995,6 +1004,7 @@ font-style: italic;
     "created_at" : "2000-01-23T04:56:07.000+00:00",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
     "stopped_at" : "2000-01-23T04:56:07.000+00:00",
+    "branch" : "main",
     "credits_used" : 0,
     "status" : "success"
   } ]
@@ -1011,6 +1021,119 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     A paginated list of recent workflow runs
         <a href="#inline_response_200_3">inline_response_200_3</a>
+    <h4 class="field-label">default</h4>
+    Error response.
+        <a href="#inline_response_default">inline_response_default</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getProjectWorkflowTestMetrics"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /insights/{project-slug}/workflows/{workflow-name}/test-metrics</code></pre></div>
+    <div class="method-summary">Get test metrics for a project's workflows (<span class="nickname">getProjectWorkflowTestMetrics</span>)</div>
+    <div class="method-notes">Get test metrics for a project's workflows. Currently tests metrics are calculated based on 10 most recent workflow runs.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">project-slug (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Project slug in the form <code>vcs-slug/org-name/repo-name</code>. The <code>/</code> characters may be URL-escaped. default: null </div><div class="param">workflow-name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The name of the workflow. default: null </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">branch (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; The name of a vcs branch. If not passed we will scope the API call to the default branch. default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_6">inline_response_200_6</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "slowest_tests_extra" : 0,
+  "most_failed_tests_extra" : 0,
+  "total_test_runs" : 0,
+  "slowest_tests" : [ {
+    "total_runs" : 0,
+    "job_name" : "job_name",
+    "p95_duration" : 1.4658129805029452,
+    "flaky" : true,
+    "failed_runs" : 0,
+    "test_name" : "test_name"
+  }, {
+    "total_runs" : 0,
+    "job_name" : "job_name",
+    "p95_duration" : 1.4658129805029452,
+    "flaky" : true,
+    "failed_runs" : 0,
+    "test_name" : "test_name"
+  } ],
+  "average_test_count" : 0,
+  "test_runs" : [ {
+    "workflow_id" : "",
+    "test_counts" : {
+      "total" : 0,
+      "failure" : 0,
+      "success" : 0,
+      "error" : 0,
+      "skipped" : 0
+    },
+    "pipeline_number" : 0,
+    "success_rate" : 3.6160767
+  }, {
+    "workflow_id" : "",
+    "test_counts" : {
+      "total" : 0,
+      "failure" : 0,
+      "success" : 0,
+      "error" : 0,
+      "skipped" : 0
+    },
+    "pipeline_number" : 0,
+    "success_rate" : 3.6160767
+  } ],
+  "most_failed_tests" : [ {
+    "total_runs" : 0,
+    "job_name" : "job_name",
+    "p95_duration" : 1.4658129805029452,
+    "flaky" : true,
+    "failed_runs" : 0,
+    "test_name" : "test_name"
+  }, {
+    "total_runs" : 0,
+    "job_name" : "job_name",
+    "p95_duration" : 1.4658129805029452,
+    "flaky" : true,
+    "failed_runs" : 0,
+    "test_name" : "test_name"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A list of test metrics by workflow
+        <a href="#inline_response_200_6">inline_response_200_6</a>
     <h4 class="field-label">default</h4>
     Error response.
         <a href="#inline_response_default">inline_response_default</a>
@@ -3134,6 +3257,10 @@ font-style: italic;
     <li><a href="#inline_response_200_4_metrics_duration_metrics"><code>inline_response_200_4_metrics_duration_metrics</code> - </a></li>
     <li><a href="#inline_response_200_5"><code>inline_response_200_5</code> - </a></li>
     <li><a href="#inline_response_200_5_items"><code>inline_response_200_5_items</code> - </a></li>
+    <li><a href="#inline_response_200_6"><code>inline_response_200_6</code> - </a></li>
+    <li><a href="#inline_response_200_6_most_failed_tests"><code>inline_response_200_6_most_failed_tests</code> - </a></li>
+    <li><a href="#inline_response_200_6_test_counts"><code>inline_response_200_6_test_counts</code> - </a></li>
+    <li><a href="#inline_response_200_6_test_runs"><code>inline_response_200_6_test_runs</code> - </a></li>
     <li><a href="#inline_response_default"><code>inline_response_default</code> - </a></li>
   </ol>
 
@@ -3653,6 +3780,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#UUID">UUID</a></span> The unique ID of the workflow. format: uuid</div>
+<div class="param">branch </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The VCS branch of a Workflow's trigger. </div>
 <div class="param">duration </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The duration in seconds of a run. format: int64</div>
 <div class="param">created_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow was created. format: date-time</div>
 <div class="param">stopped_at </div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> The date and time the workflow stopped. format: date-time</div>
@@ -3725,6 +3853,52 @@ font-style: italic;
         <div class="param-enum">success</div><div class="param-enum">not_run</div><div class="param-enum">failed</div><div class="param-enum">canceled</div><div class="param-enum">unauthorized</div>
 <div class="param">duration </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The duration in seconds of a run. format: int64</div>
 <div class="param">credits_used </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of credits used during execution. Note that Insights is not a real time financial reporting tool and should not be used for credit reporting. format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_6"><code>inline_response_200_6</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Project level test metrics response</div>
+    <div class="field-items">
+      <div class="param">average_test_count </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The average number of tests executed per run format: int64</div>
+<div class="param">most_failed_tests </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_6_most_failed_tests">array[inline_response_200_6_most_failed_tests]</a></span> Metrics for the most frequently failing tests </div>
+<div class="param">most_failed_tests_extra </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of tests with the same success rate being omitted from most_failed_tests format: int64</div>
+<div class="param">slowest_tests </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_6_most_failed_tests">array[inline_response_200_6_most_failed_tests]</a></span> Metrics for the slowest running tests </div>
+<div class="param">slowest_tests_extra </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of tests with the same duration rate being omitted from slowest_tests format: int64</div>
+<div class="param">total_test_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total number of test runs format: int64</div>
+<div class="param">test_runs </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_6_test_runs">array[inline_response_200_6_test_runs]</a></span> Test counts grouped by pipeline number and workflow id </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_6_most_failed_tests"><code>inline_response_200_6_most_failed_tests</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">failed_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of times the test failed format: int64</div>
+<div class="param">job_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the job. </div>
+<div class="param">p95_duration </div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span> The 95th percentile duration, in seconds, among a group of test runs. format: double</div>
+<div class="param">test_name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The name of the test. </div>
+<div class="param">total_runs </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total number of times the test was run. format: int64</div>
+<div class="param">flaky </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Whether the test is flaky. </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_6_test_counts"><code>inline_response_200_6_test_counts</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>Test counts for a given pipeline number</div>
+    <div class="field-items">
+      <div class="param">error </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of tests with the error status format: int64</div>
+<div class="param">failure </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of tests with the failure status format: int64</div>
+<div class="param">skipped </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of tests with the skipped status format: int64</div>
+<div class="param">success </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of tests with the success status format: int64</div>
+<div class="param">total </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The total number of tests format: int64</div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_6_test_runs"><code>inline_response_200_6_test_runs</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">pipeline_number </div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> The number of the pipeline associated with the provided test counts format: int64</div>
+<div class="param">workflow_id </div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span> The ID of the workflow associated with the provided test counts </div>
+<div class="param">success_rate </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> The success rate calculated from test counts format: float</div>
+<div class="param">test_counts </div><div class="param-desc"><span class="param-type"><a href="#inline_response_200_6_test_counts">inline_response_200_6_test_counts</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
